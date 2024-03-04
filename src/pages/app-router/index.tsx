@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import { publicRoutes } from "@/router";
+import { publicRoutes } from "@/routes";
 
 const AppRouter = () => {
     return (
@@ -10,6 +10,7 @@ const AppRouter = () => {
                     <Route
                         path={route.path}
                         element={route.element}
+                        key={route.element}
                     />
                 )
             }

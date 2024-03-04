@@ -1,0 +1,20 @@
+.btn {
+    margin-top: 20px;
+    min-width: 130px;
+    min-height: 45px;
+    background: #4C85FF;
+    border: none;
+    box-shadow: 0px 5px 15px rgba(188, 199, 255, 0.75);
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+
+    color: #FFFFFF;
+    transition: .5s;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #4C85FF;
+    cursor: pointer;
+}
