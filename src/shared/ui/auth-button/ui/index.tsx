@@ -4,10 +4,11 @@ import s from './style.module.css';
 
 type AuthButtonProps = {
     text: string;
+    onClick: () => void;
 }
 
-export const AuthButton:React.FC<AuthButtonProps> = ({text}) => {
+export const AuthButton:React.FC<AuthButtonProps> = ({text, onClick}) => {
     return (
-        <button className={s.btn}>{text}</button>
+        <button className={s.btn} onClick={onClick}>{text}</button>
     )
 }

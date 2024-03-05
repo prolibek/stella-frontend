@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import s from './styles.module.css';
 
-type AuthChoiceInputComponentProps = {
+type AuthSelectInputComponentProps = {
     options: string[]; 
     placeholder?: string; 
 };
 
-export const AuthChoiceInput: React.FC<AuthChoiceInputComponentProps> = ({ options, placeholder }) => {
+export const AuthSelect: React.FC<AuthSelectInputComponentProps> = ({ options, placeholder }) => {
     const [selectedOption, setSelectedOption] = useState<string>('');
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

@@ -5,3 +5,15 @@
     color: #3D4F9F;
     text-align: center;
 }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btns {
+    display: flex;
+    gap: 20px;
+}
