@@ -15,5 +15,24 @@
 
 .btns {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.backBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    background: none;
+    border: none;
+    color: #697CA6;
+    font-size: 13px;
+    min-width: 130px;
+    min-height: 45px;
+    margin-top: 20px;
+}
+
+.backBtn:hover {
+    cursor: pointer;
 }

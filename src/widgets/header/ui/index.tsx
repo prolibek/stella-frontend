@@ -9,7 +9,7 @@ export const Header = () => {
   }
 
   function handleSignInClick() {
-    navigate('/signin');
+    navigate('/sign-in');
   }
 
   return (

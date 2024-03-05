@@ -9,10 +9,29 @@ import { useNavigate } from 'react-router-dom';
 export const RegisterPage = () => {
     const navigate = useNavigate();
     const [ curr, setCurr ] = useState(0)
+
+    const [ email, setEmail ] = useState("");
+    const [ password, setPassword ] = useState("");
+    const [ repeatPassword, setRepeatPassword ] = useState("");
+    
+    const [ date, setDate ] = useState("");
+    const [ pos, setPos ] = useState("");
     
     const steps = [
-        <FirstStep/>,
-        <SecondStep/>
+        <FirstStep
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            repeatPassword={repeatPassword}
+            setRepeatPassword={setRepeatPassword}
+        />,
+        <SecondStep
+            date={date}
+            setDate={setDate}
+            pos={pos}
+            setPos={setPos}
+        />
     ]
 
     return (
@@ -25,13 +44,15 @@ export const RegisterPage = () => {
                 <div className={s.btns}>
                     {
                         curr > 0 &&
-                        <AuthButton
+                        <button
                             onClick={()=>{
                                 setCurr(curr-1);
                                 console.log(curr);
                             }} 
-                            text="Back"
-                        />
+                            className={s.backBtn}
+                        >
+                            Back
+                        </button>
                     }
                     <AuthButton
                         onClick={()=>{

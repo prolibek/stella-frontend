@@ -4,10 +4,25 @@ import s from "./styles.module.css"
 
 type AuthTextInputProps = {
     text: string;
+    type: string;
+    onChange: () => void | null;
+    value: string;
 };
 
-export const AuthTextInput: React.FC<AuthTextInputProps> = ({text}) => {
+export const AuthTextInput: React.FC<AuthTextInputProps> = (
+    {
+        text, 
+        type="text",
+        value,
+        onChange,
+    }) => {
     return (
-        <input type="text" placeholder={text} className={s.inp}/>
+        <input 
+            type={type} 
+            placeholder={text} 
+            className={s.inp}
+            value={value}
+            onChange={onChange}
+        />
     )
 }

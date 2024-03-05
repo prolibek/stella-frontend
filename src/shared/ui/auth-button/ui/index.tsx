@@ -4,7 +4,7 @@ import s from './style.module.css';
 
 type AuthButtonProps = {
     text: string;
-    onClick: () => void;
+    onClick: () => void | null;
 }
 
 export const AuthButton:React.FC<AuthButtonProps> = ({text, onClick}) => {

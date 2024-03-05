@@ -4,3 +4,10 @@
     align-items: center;
     justify-content: center;
 }
+
+.form p {
+    max-width: 275px;
+    font-size: 13px;
+    font-family: 'Quicksand', sans-serif;
+    color: #697CA6;
+}

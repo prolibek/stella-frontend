@@ -2,29 +2,30 @@
 import React, { useState } from 'react';
 import s from './styles.module.css';
 
+type Position = {
+    id: number;
+    name: string;
+}
+
 type AuthSelectInputComponentProps = {
-    options: string[]; 
+    options: Position[]; 
     placeholder?: string; 
+    onChange: () => void | null;
+    value: string | undefined;
 };
 
-export const AuthSelect: React.FC<AuthSelectInputComponentProps> = ({ options, placeholder }) => {
-    const [selectedOption, setSelectedOption] = useState<string>('');
-
-    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedOption(e.target.value);
-    };
+export const AuthSelect: React.FC<AuthSelectInputComponentProps> = ({ options, placeholder, onChange, value }) => {
 
     return (
         <div className={s["select-choice-container"]}>
             <select
-                value={selectedOption}
-                onChange={handleSelectChange}
+                value={value}
+                onChange={onChange}
                 className={s["select-inp"]}
-                defaultValue=""
             >
                 {placeholder && <option value="" disabled>{placeholder}</option>}
-                {options.map((option, index) => (
-                    <option key={index} value={option} className={s.option}>{option}</option>
+                {options.map((option) => (
+                    <option key={option.id} value={option.name} className={s.option}>{option.name}</option>
                 ))}
             </select>
         </div>
