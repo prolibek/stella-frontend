@@ -5,6 +5,8 @@ import SecondStep from '../register-step2';
 import { useState } from 'react';
 import { AuthButton } from '@/shared/ui/auth-button';
 import { useNavigate } from 'react-router-dom';
+import { validateEmail, validateStepOne, validateStepTwo } from '../lib/validationLogic';
+import AuthService from '../api/authService';
 
 export const RegisterPage = () => {
     const navigate = useNavigate();
@@ -20,10 +22,16 @@ export const RegisterPage = () => {
         repeatPassword: ''
     })
     
+    const [ firstName, setFirstName ] = useState("");
+    const [ lastName, setLastName ] = useState("");
+    const [ middleName, setMiddleName ] = useState("");
     const [ date, setDate ] = useState("");
     const [ pos, setPos ] = useState("");
     
     const [ secondStepErrors, setSecondStepErrors ] = useState({
+        firstName: '',
+        lastName: '',
+        middleName: '',
         date: '',
         pos: ''
     })
@@ -43,32 +51,19 @@ export const RegisterPage = () => {
             setDate={setDate}
             pos={pos}
             setPos={setPos}
+            firstName={firstName}
+            setFirstName={setFirstName}
+            lastName={lastName}
+            setLastName={setLastName}
+            middleName={middleName}
+            setMiddleName={setMiddleName}
             errors={secondStepErrors}
         />
     ]
 
-    const validateEmail = (email: string) => {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
-        return re.test(String(email).toLowerCase());
-    };
-
     const goToNextStep = () => {
         if (curr === 0) {
-            let errors = { email: '', password: '', repeatPassword: '' };
-    
-            if (!email) {
-                errors.email = 'Email field is empty';
-            } else if (!validateEmail(email)) {
-                errors.email = 'Enter valid email address.';
-            }
-    
-            if (!password) {
-                errors.password = 'Password field is empty.';
-            }
-    
-            if (password !== repeatPassword) {
-                errors.repeatPassword = 'Passwords should match.';
-            }
+            let errors = validateStepOne(email, password, repeatPassword);
     
             setFirstStepErrors(errors);
     
@@ -78,32 +73,23 @@ export const RegisterPage = () => {
         }
 
         if (curr === 1) {
-            let errors = { pos: '', date: '' };
-
-            if(!pos) {
-                errors.pos = 'Choose your position.';
-            }
-
-            if(date) {
-                let today = new Date();
-                let tmpDate = new Date(date); 
-
-                let diff = today.getFullYear() - tmpDate.getFullYear();
-
-                if (tmpDate.getMonth() > today.getMonth() || 
-                    (tmpDate.getMonth() === today.getMonth() && tmpDate.getDate() > today.getDate())) {
-                    diff--;
-                }
-
-                if(diff <= 16 && diff >= 100)
-                    errors.date = 'Enter valid age.' 
-            }
+            const errors = validateStepTwo(firstName, lastName, pos, date);
 
             setSecondStepErrors(errors);
 
             if(errors.pos || errors.date) {
                 return;
             }
+
+            AuthService.register({
+                email: email,
+                password: password,
+                birth_date: date || null,
+                role: Number(pos),
+                first_name: firstName,
+                last_name: lastName,
+                middle_name: middleName
+            });
 
             navigate('/dashboard');
         } else {

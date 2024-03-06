@@ -25,7 +25,7 @@ export const AuthSelect: React.FC<AuthSelectInputComponentProps> = ({ options, p
             >
                 {placeholder && <option value="" disabled>{placeholder}</option>}
                 {options.map((option) => (
-                    <option key={option.id} value={option.name} className={s.option}>{option.name}</option>
+                    <option key={option.id} value={option.id} className={s.option}>{option.name}</option>
                 ))}
             </select>
         </div>

@@ -50,7 +50,6 @@ const FirstStep: React.FC<FirstStepProps> = ({
             <AuthTextInput 
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setRepeatPassword(e.target.value)
-                    console.log(password)
                 }} 
                 value={repeatPassword}
                 type="password" 
