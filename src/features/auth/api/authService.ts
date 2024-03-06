@@ -16,7 +16,9 @@ interface RegisterData {
 }
 
 interface AuthResponse {
-    accessToken: string;
+    detail: string;
+    access_token: string;
+    user: object;
 }
 
 const AuthService = {

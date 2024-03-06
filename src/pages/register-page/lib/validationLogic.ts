@@ -1,7 +1,4 @@
-export const validateEmail = (email: string) => {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
-    return re.test(String(email).toLowerCase());
-};
+import { validateEmail } from "@/features/auth/lib/validateEmail";
 
 export const validateStepOne = (
     email: string, 
@@ -18,6 +15,8 @@ export const validateStepOne = (
 
     if (!password.trim()) {
         errors.password = 'Password field is empty.';
+    } else if (!/(?=.*\d)(?=.*[a-zA-Z]).{8,}/.test(password)) {
+        errors.password = 'Password must be at least 8 characters long and contain numbers and letters.';
     }
 
     if (password !== repeatPassword) {

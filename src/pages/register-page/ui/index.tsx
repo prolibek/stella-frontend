@@ -2,13 +2,16 @@ import LandingLayout from '@/pages/layouts/landing-layout';
 import s from './style.module.css';
 import FirstStep from '../register-step1';
 import SecondStep from '../register-step2';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { AuthButton } from '@/shared/ui/auth-button';
 import { useNavigate } from 'react-router-dom';
-import { validateEmail, validateStepOne, validateStepTwo } from '../lib/validationLogic';
-import AuthService from '../api/authService';
+import { validateStepOne, validateStepTwo } from '../lib/validationLogic';
+import AuthService from '@/features/auth/api/authService';
+import { login } from '@/features/auth/slice';
 
 export const RegisterPage = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [ curr, setCurr ] = useState(0)
 
@@ -61,12 +64,10 @@ export const RegisterPage = () => {
         />
     ]
 
-    const goToNextStep = () => {
+    const goToNextStep = async () => {
         if (curr === 0) {
             let errors = validateStepOne(email, password, repeatPassword);
-    
             setFirstStepErrors(errors);
-    
             if (errors.email || errors.password || errors.repeatPassword) {
                 return;
             }
@@ -74,14 +75,12 @@ export const RegisterPage = () => {
 
         if (curr === 1) {
             const errors = validateStepTwo(firstName, lastName, pos, date);
-
             setSecondStepErrors(errors);
-
-            if(errors.pos || errors.date) {
+            if(errors.firstName || errors.lastName || errors.pos || errors.date) {
                 return;
             }
 
-            AuthService.register({
+            const userData = {
                 email: email,
                 password: password,
                 birth_date: date || null,
@@ -89,7 +88,14 @@ export const RegisterPage = () => {
                 first_name: firstName,
                 last_name: lastName,
                 middle_name: middleName
-            });
+            }
+
+            const response = await AuthService.register(userData);
+
+            dispatch(login({
+                accessToken: response.access_token,
+                user: response.user
+            }))
 
             navigate('/dashboard');
         } else {
