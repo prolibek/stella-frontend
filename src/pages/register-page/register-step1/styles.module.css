@@ -4,3 +4,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.error {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    color: red;
+    padding: 0;
+    margin: 0;
+    height: 25px;
+    margin-top: 5px;
+}

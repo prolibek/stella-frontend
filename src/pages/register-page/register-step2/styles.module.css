@@ -5,9 +5,20 @@
     justify-content: center;
 }
 
-.form p {
+.error {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    color: red;
+    padding: 0;
+    margin: 0;
+    height: 25px;
+    margin-top: 5px;
+}
+
+.agreement {
     max-width: 275px;
     font-size: 13px;
     font-family: 'Quicksand', sans-serif;
     color: #697CA6;
 }
+

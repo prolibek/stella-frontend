@@ -1,16 +1,24 @@
 import { AuthCalendarInput } from '@/shared/ui/auth-calendar';
 import { AuthSelect } from '@/shared/ui/auth-select';
 import s from './styles.module.css';
+
+type errorsType = {
+    date: string;
+    pos: string;
+}
+
 type SecondStepProps = {
     date: string;
     setDate: (val: string) => void;
     pos: string;
     setPos: (val: string) => void;
+    errors: errorsType;
 }
 
 export const SecondStep:React.FC<SecondStepProps> = ({
     date, setDate, 
-    pos, setPos
+    pos, setPos,
+    errors
 }) => {
     return (
         <div className={s.form}>
@@ -35,6 +43,7 @@ export const SecondStep:React.FC<SecondStepProps> = ({
                     }
                 }
             />
+            <p className={s.error}>{errors.pos}</p>
             <AuthCalendarInput
                 title="Date of birth"
                 value={date}
@@ -44,7 +53,8 @@ export const SecondStep:React.FC<SecondStepProps> = ({
                     }
                 }
             />
-            <p>
+            <p className={s.error}>{errors.date}</p>
+            <p className={s.agreement}>
                 By registering, I accept the privacy policy, user agreement and agree to the processing of personal data
             </p>
         </div>
