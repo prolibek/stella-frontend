@@ -8,7 +8,7 @@ type AuthCalendarInputProps = {
     value: string | undefined;
 }
 
-export const AuthCalendarInput:React.FC<AuthCalendarInputProps> = ({title, value, onChange}) => {
+const AuthCalendarInput:React.FC<AuthCalendarInputProps> = ({title, value, onChange}) => {
     const [inpType, setInpType] = useState('text');
 
     return (
@@ -28,3 +28,5 @@ export const AuthCalendarInput:React.FC<AuthCalendarInputProps> = ({title, value
         />
     )
 }
+
+export default AuthCalendarInput;

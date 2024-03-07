@@ -1,5 +1,6 @@
 import axios from "axios";
 import { store } from "../store";
+import { login } from "@/features/auth/slice";
 
 const API_URL = "http://127.0.0.1:8000/api/v1/";
 
@@ -16,5 +17,33 @@ $api.interceptors.request.use((config) => {
         config.headers.Authorization = `Bearer ${access_token}`;
     return config;
 })
+
+$api.interceptors.response.use(
+    (res) => res,
+    async (error) => {
+        try {
+            const req = error.config;
+            if(!req._retry && error.response.status === 401 && error.response) {
+                req._retry = true;
+                try {
+                    const res = await $api.post("public/users/refresh-token/");
+                    const response = res.data;
+                    const access_token = response.access_token;
+                    // here
+                    store.dispatch(login({
+                        accessToken: access_token,
+                        user: response.user
+                    }));
+                } catch (error) {
+                    console.log(error);
+                }
+                return $api(req);
+            }
+            return Promise.reject(error);
+        } catch (error) {
+            return Promise.reject(error);
+        }
+    }
+)
 
 export default $api;

@@ -9,7 +9,7 @@ type AuthTextInputProps = {
     value: string;
 };
 
-export const AuthTextInput: React.FC<AuthTextInputProps> = (
+const AuthTextInput: React.FC<AuthTextInputProps> = (
     {
         text, 
         type="text",
@@ -26,3 +26,5 @@ export const AuthTextInput: React.FC<AuthTextInputProps> = (
         />
     )
 }
+
+export default AuthTextInput;

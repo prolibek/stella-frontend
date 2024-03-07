@@ -1,1 +1,0 @@
-export { AuthSelect } from './ui';

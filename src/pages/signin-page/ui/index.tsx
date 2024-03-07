@@ -1,6 +1,6 @@
 import LandingLayout from '@/pages/layouts/landing-layout';
 import s from './styles.module.css';
-import { AuthTextInput } from '@/shared/ui/auth-input';
+import AuthTextInput from '@/shared/ui/auth-input';
 import { AuthButton } from '@/shared/ui/auth-button';
 import { useState } from 'react';
 import { validateEmail } from '@/features/auth/lib/validateEmail';
@@ -44,6 +44,8 @@ export const SignInPage = () => {
                 accessToken: response.access_token,
                 user: response.user
             }));
+
+            localStorage.setItem('access_token', response.access_token);
     
             navigate('/dashboard');
         } catch {

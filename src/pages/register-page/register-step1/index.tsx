@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './styles.module.css';
 
-import { AuthTextInput } from '@/shared/ui/auth-input';
+import AuthTextInput from '@/shared/ui/auth-input';
 
 type errorsType = {
     email: string;

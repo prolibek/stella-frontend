@@ -14,7 +14,7 @@ type AuthSelectInputComponentProps = {
     value: string | undefined;
 };
 
-export const AuthSelect: React.FC<AuthSelectInputComponentProps> = ({ options, placeholder, onChange, value }) => {
+const AuthSelect: React.FC<AuthSelectInputComponentProps> = ({ options, placeholder, onChange, value }) => {
 
     return (
         <div className={s["select-choice-container"]}>
@@ -31,3 +31,5 @@ export const AuthSelect: React.FC<AuthSelectInputComponentProps> = ({ options, p
         </div>
     );
 };
+
+export default AuthSelect;

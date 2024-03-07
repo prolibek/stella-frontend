@@ -97,6 +97,8 @@ export const RegisterPage = () => {
                 user: response.user
             }))
 
+            localStorage.setItem('access_token', response.access_token);
+
             navigate('/dashboard');
         } else {
             setCurr(curr + 1);

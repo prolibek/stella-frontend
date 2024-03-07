@@ -48,6 +48,20 @@ const AuthService = {
                 response: error.response
             }
         }
+    },
+
+    refresh: async () : Promise <AuthResponse> => {
+        try {
+            const response = await $api.post("public/users/refresh-token/");
+            return response.data;
+        } catch (error) {
+            throw {
+                name: error.name,
+                message: error.message,
+                stack: error.stack, 
+                response: error.response
+            }
+        }
     }
 };
 

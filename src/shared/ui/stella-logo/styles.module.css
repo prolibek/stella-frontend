@@ -1,0 +1,15 @@
+.logoImg {
+    height: 36px;
+}
+
+.logoText {
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 700;
+    color: #282E7B;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

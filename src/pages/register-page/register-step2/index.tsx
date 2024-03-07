@@ -1,7 +1,7 @@
-import { AuthCalendarInput } from '@/shared/ui/auth-calendar';
-import { AuthSelect } from '@/shared/ui/auth-select';
+import AuthCalendarInput from '@/shared/ui/auth-calendar';
+import AuthSelect from '@/shared/ui/auth-select';
 import s from './styles.module.css';
-import { AuthTextInput } from '@/shared/ui/auth-input';
+import AuthTextInput from '@/shared/ui/auth-input';
 
 type errorsType = {
     firstName: string;

@@ -7,7 +7,7 @@ type AuthButtonProps = {
     onClick: () => void | null;
 }
 
-export const AuthButton:React.FC<AuthButtonProps> = ({text, onClick}) => {
+export const AuthButton: React.FC<AuthButtonProps> = ({text, onClick}) => {
     return (
         <button className={s.btn} onClick={onClick}>{text}</button>
     )
