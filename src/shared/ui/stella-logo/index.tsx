@@ -12,20 +12,20 @@ const StellaLogo: LogoProps = ({
     fontSize
 }) => {
     return (
-        <div className={s.logoContainer}>
+        <div 
+            className={s.logoContainer} 
+            style={{height: imgHeight | 36}}
+        >
             <img 
                 src={star} 
                 className={s.logoImg}
-                style={{
-                    height: imgHeight | 36
-                }}
             />
-            <p 
-                className={s.logoText} 
+            <h1 
+                className={s.logoText}
                 style={{
-                    fontSize: fontSize | 26
-                }}
-            >STELLA</p>
+                    fontSize: imgHeight - 12 | 24
+                }} 
+            >STELLA</h1>
         </div>
     )
 }

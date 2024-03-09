@@ -7,7 +7,7 @@ interface IAuthState {
 }
 
 const token = localStorage.getItem('access_token')
-const initialState = {
+const initialState: IAuthState = {
   accessToken: token ? token : null,
   user: null,
   status: token ? 'succeeded' : 'idle'

@@ -21,28 +21,29 @@ $api.interceptors.request.use((config) => {
 $api.interceptors.response.use(
     (res) => res,
     async (error) => {
-        try {
-            const req = error.config;
-            if(!req._retry && error.response.status === 401 && error.response) {
-                req._retry = true;
-                try {
-                    const res = await $api.post("public/users/refresh-token/");
-                    const response = res.data;
-                    const access_token = response.access_token;
-                    // here
-                    store.dispatch(login({
-                        accessToken: access_token,
-                        user: response.user
-                    }));
-                } catch (error) {
-                    console.log(error);
-                }
+        const req = error.config;
+        console.log(error.config);
+        console.log(error.response);
+        if(req._retry === undefined) req._retry = false;
+        if(!req._retry && error.response.status === 401 && error.response) {
+            req._retry = true;
+            try {
+                const res = await $api.post("public/users/refresh-token/");
+                const response = res.data;
+                const access_token = response.access_token;
+                localStorage.setItem('access_token', access_token);
+                req.headers.Authorization = `Bearer ${access_token}`;
+                // here
+                store.dispatch(login({
+                    accessToken: access_token,
+                    user: response.user
+                }));
                 return $api(req);
+            } catch (error) {
+                console.log(error);
             }
-            return Promise.reject(error);
-        } catch (error) {
-            return Promise.reject(error);
         }
+        return Promise.reject(error);
     }
 )
 

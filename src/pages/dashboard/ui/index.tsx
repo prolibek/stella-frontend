@@ -1,19 +1,12 @@
 import StellaLogo from '@/shared/ui/stella-logo';
 import s from './styles.module.css';
+import { useSelector } from 'react-redux';
+import { WorkHeader } from '@/widgets/work-header';
 
 export const Dashboard = () => {
     return (
-        <>
-            <div className={s.header}>
-                <div className={s.headerContainer}>
-                    <div className={s.logo}>
-                        <StellaLogo/>
-                    </div>
-                    <div className={s.profile}>
-
-                    </div>
-                </div>
-            </div>
-        </>
+        <div className={s.wrapper}>
+            <WorkHeader />
+        </div>
     )
 }

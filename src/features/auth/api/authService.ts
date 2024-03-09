@@ -21,6 +21,10 @@ interface AuthResponse {
     user: object;
 }
 
+interface LogoutResponse {
+    detail: string;
+}
+
 const AuthService = {
     login: async (data: LoginData) : Promise <AuthResponse> => {
         try {    
@@ -53,6 +57,20 @@ const AuthService = {
     refresh: async () : Promise <AuthResponse> => {
         try {
             const response = await $api.post("public/users/refresh-token/");
+            return response.data;
+        } catch (error) {
+            throw {
+                name: error.name,
+                message: error.message,
+                stack: error.stack, 
+                response: error.response
+            }
+        }
+    },
+
+    logout: async () : Promise <LogoutResponse> => {
+        try {
+            const response = await $api.post("public/users/logout/");
             return response.data;
         } catch (error) {
             throw {
