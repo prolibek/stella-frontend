@@ -25,7 +25,7 @@ export const WorkHeader = () => {
                         onClick={() => {
                             setIsOpen(!isOpen)
                         }}
-                        src="images/userIcon.png"
+                        src="/images/userIcon.png"
                         className={s.iconImg}
                     />
                     {   
@@ -59,7 +59,6 @@ export const WorkHeader = () => {
                                 <button 
                                     onClick={async () => {
                                         await AuthService.logout();
-                                        localStorage.removeItem('access_token');
                                         dispatch(logout());
                                         navigate("/");
                                     }}

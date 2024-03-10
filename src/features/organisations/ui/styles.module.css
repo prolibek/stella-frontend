@@ -1,0 +1,52 @@
+
+
+.orgCard {
+    width: 240px;
+    height: 100px;
+    padding: 20px;
+    border: 1px solid #9f9f9f;
+    transition: .4s;
+    border-radius: 10px;
+}
+
+.orgName {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nns {
+    display: flex;
+    flex-direction: column;
+}
+
+.nns p {
+    font-size: 12px;
+}
+
+.orgName img {
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+    background-color: #F5F8FF;
+}
+
+.orgName h3 {
+    font-size: 16px;
+    font-weight: 650;
+}
+
+.orgCard:hover {
+    cursor: pointer;
+    background-color: #F5F8FF;
+}
+
+.orgInfo {
+    margin-left: 20px;
+}
+
+.orgInfo * {
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}

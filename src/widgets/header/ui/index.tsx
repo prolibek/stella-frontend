@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import s from './styles.module.css';
+import StellaLogo from '../../../shared/ui/stella-logo';
 
 export const Header = () => {
   let navigate = useNavigate();
@@ -17,6 +18,9 @@ export const Header = () => {
       <div className={s["container"]}>
         <div className={s["text"]}>
           <nav className={s["navigation"]}>
+            <div className={s.logoContainer}>
+              <StellaLogo/>
+            </div>
             <NavLink to="/" className={s["nav-link"]}>Home</NavLink>
             <NavLink to="/" className={s["nav-link"]}>About us</NavLink>
             <NavLink to="/" className={s["nav-link"]}>Mission</NavLink>

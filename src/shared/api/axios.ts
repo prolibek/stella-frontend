@@ -40,7 +40,7 @@ $api.interceptors.response.use(
                 }));
                 return $api(req);
             } catch (error) {
-                console.log(error);
+                Promise.reject(error);
             }
         }
         return Promise.reject(error);

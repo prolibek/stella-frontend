@@ -31,12 +31,14 @@
     position: absolute;
     top: 40px;
     right: 0;
+    z-index: 600;
 }
 
 .menuBlock {
     border-top: 2px solid #d7d7d7;
     padding-top: 5px;
     padding-bottom: 5px;
+    background: white;
 }
 
 .menuButton {
@@ -45,7 +47,7 @@
     align-items: center;
     transition: .2s;
     border: none;
-    background: none;
+    background: white;
     width: 100%;
 }
 

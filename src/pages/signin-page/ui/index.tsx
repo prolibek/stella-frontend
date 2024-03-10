@@ -44,8 +44,6 @@ export const SignInPage = () => {
                 accessToken: response.access_token,
                 user: response.user
             }));
-
-            localStorage.setItem('access_token', response.access_token);
     
             navigate('/dashboard');
         } catch {

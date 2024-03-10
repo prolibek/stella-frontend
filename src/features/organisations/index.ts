@@ -1,0 +1,1 @@
+export { OrganisationCard } from './ui';

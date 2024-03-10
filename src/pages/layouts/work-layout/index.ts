@@ -1,0 +1,1 @@
+export { WorkLayout } from './ui';
