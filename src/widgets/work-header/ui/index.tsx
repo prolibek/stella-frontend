@@ -39,8 +39,10 @@ export const WorkHeader = () => {
                                         <img src="images/userIcon.png" className={s.userIcon}/>
                                         <div className={s.emailAndName}>
                                             <span className={s.fullName}>
+                                                { user.first_name } { user.last_name }
                                             </span>
                                             <span className={s.email}>
+                                                { user.email }
                                             </span>
                                         </div>
                                     </div>

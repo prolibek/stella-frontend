@@ -1,16 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface IAuthState {
-  accessToken: any | null,
-  user: any,
-  status: string
+interface IUser {
+  id: number,
+  first_name: string,
+  last_name: string,
+  middle_name: string | null,
+  email: string,
+  birth_date: string | null,
+  role: number,
+  avatar: string | null
 }
 
-const token = localStorage.getItem('access_token')
+interface IAuthState {
+  accessToken: string | null,
+  user: IUser | null,
+  status: 'succeeded' | 'idle'
+}
+
 const initialState: IAuthState = {
-  accessToken: token ? token : null,
+  accessToken: null,
   user: null,
-  status: token ? 'succeeded' : 'idle'
+  status: 'idle'
 }
 
 export const authSlice = createSlice({
