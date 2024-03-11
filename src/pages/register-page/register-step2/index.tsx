@@ -93,6 +93,7 @@ export const SecondStep:React.FC<SecondStepProps> = ({
                         setDate(e.target.value)
                     }
                 }
+                className={`${s.calendarCustom} ${s.inp}`}
             />
             <p className={s.error}>{errors.date}</p>
             <p className={s.agreement}>
