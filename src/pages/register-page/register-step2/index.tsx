@@ -82,6 +82,7 @@ export const SecondStep:React.FC<SecondStepProps> = ({
                         setPos(e.target.value)
                     }
                 }
+            className={`${s.selectCustom} ${s.inp}`}
             />
             <p className={s.error}>{errors.pos}</p>
             <AuthCalendarInput
