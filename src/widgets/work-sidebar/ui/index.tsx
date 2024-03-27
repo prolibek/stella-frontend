@@ -26,6 +26,9 @@ export const Sidebar = () => {
                         <button className={s.sidebarBtn}>
                             Analytics
                         </button>
+                        <button className={s.sidebarBtn}>
+                            Forms
+                        </button>
                     </>
                     :
                     <>

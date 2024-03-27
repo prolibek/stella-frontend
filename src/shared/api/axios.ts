@@ -2,7 +2,7 @@ import axios from "axios";
 import { store } from "../store";
 import { login } from "@/features/auth/slice";
 
-const API_URL = "http://127.0.0.1:8000/api/v1/";
+const API_URL = "http://127.0.0.1:8000/";
 
 const $api = axios.create({
     withCredentials: true,
@@ -28,7 +28,7 @@ $api.interceptors.response.use(
         if(!req._retry && error.response.status === 401 && error.response) {
             req._retry = true;
             try {
-                const res = await $api.post("public/users/refresh-token/");
+                const res = await $api.post("api/v1/public/users/refresh-token/");
                 const response = res.data;
                 const access_token = response.access_token;
                 localStorage.setItem('access_token', access_token);

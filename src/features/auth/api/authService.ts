@@ -28,7 +28,7 @@ interface LogoutResponse {
 const AuthService = {
     login: async (data: LoginData) : Promise <AuthResponse> => {
         try {    
-            const response = await $api.post("public/users/login/", data);
+            const response = await $api.post("api/v1/public/users/login/", data);
             return response.data;        
         } catch (error) {
             throw {
@@ -42,7 +42,7 @@ const AuthService = {
 
     register: async (data: RegisterData) : Promise <AuthResponse> => {
         try {
-            const response = await $api.post("public/users/register/", data);
+            const response = await $api.post("api/v1/public/users/register/", data);
             return response.data;
         } catch (error) {
             throw {
@@ -56,7 +56,7 @@ const AuthService = {
 
     refresh: async () : Promise <AuthResponse> => {
         try {
-            const response = await $api.post("public/users/refresh-token/");
+            const response = await $api.post("api/v1/public/users/refresh-token/");
             return response.data;
         } catch (error) {
             throw {
@@ -70,7 +70,7 @@ const AuthService = {
 
     logout: async () : Promise <LogoutResponse> => {
         try {
-            const response = await $api.post("public/users/logout/");
+            const response = await $api.post("api/v1/public/users/logout/");
             return response.data;
         } catch (error) {
             throw {

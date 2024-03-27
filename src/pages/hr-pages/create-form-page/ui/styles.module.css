@@ -1,0 +1,86 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.headPart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.headPart h1 {
+    font-weight: 550;
+    font-size: 24px;
+}
+
+.content {
+    margin-top: 25px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.field {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    padding: 15px;
+    padding-left: 30px;
+}
+
+.fieldUpperPart {
+    display: flex;
+    gap: 25px;
+}
+
+.question {
+    width: 435px;
+    height: 35px;
+    border: none;
+    font-size: 16px;
+    font-weight: 550;
+}
+
+.question:focus {
+    border: none;
+    outline: none;
+}
+
+.fieldType {
+    position: relative;
+    width: 220px;
+    padding-left: 20px;
+    font-size: 16px;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 5px;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.buttonContainer img {
+    height: 20px;
+}
+
+.formName {
+    align-self: flex-start;
+    padding-left: 20px;
+    height: 40px;
+    color: black;
+    outline: none;
+    border: none;
+    font-size: 17px;
+    font-weight: 550;
+}
+
+.infoPar {
+    margin-left: 10px;
+}

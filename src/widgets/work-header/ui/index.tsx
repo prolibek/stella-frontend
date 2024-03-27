@@ -36,7 +36,7 @@ export const WorkHeader = () => {
                             <button className={s.menuButton}>
                                 <div className={s.innerMenuButton}>
                                     <div className={s.viewProfile}>
-                                        <img src="images/userIcon.png" className={s.userIcon}/>
+                                        <img src="/images/userIcon.png" className={s.userIcon}/>
                                         <div className={s.emailAndName}>
                                             <span className={s.fullName}>
                                                 { user.first_name } { user.last_name }

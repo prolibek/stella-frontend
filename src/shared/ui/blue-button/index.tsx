@@ -3,11 +3,11 @@ import s from './styles.module.css'
 type BlueButtonProps = {
     onClick: () => void | null,
     style: any,
-    text: string
+    children?: React.ReactNode
 }
 
 const BlueButton: React.FC<BlueButtonProps> = ({
-    onClick, style, text
+    onClick, style, children
 }) => {
     return (
         <button
@@ -15,7 +15,7 @@ const BlueButton: React.FC<BlueButtonProps> = ({
             style={style} 
             onClick={onClick}
         >
-            {text}
+            {children}
         </button>
     )
 }

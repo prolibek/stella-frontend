@@ -16,4 +16,14 @@
     flex-grow: 1;
     margin-top: 40px;
     margin-left: 80px;
+    margin-right: 80px;
+}
+
+.content h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.content p {
+    font-size: 14px;
 }

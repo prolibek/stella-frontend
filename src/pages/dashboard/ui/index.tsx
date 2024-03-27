@@ -5,9 +5,11 @@ import { WorkHeader } from '@/widgets/work-header';
 import { useEffect } from 'react';
 import $api from '@/shared/api/axios';
 import { OrganisationCard } from '@/features/organisations';
+import { useSelector } from 'react-redux';
 
 export const Dashboard = () => {
     const navigate = useNavigate();
+    const user = useSelector(state => state.auth.user);
 
     useEffect(() => {
         (async () => {
@@ -38,7 +40,10 @@ export const Dashboard = () => {
                                 <div 
                                     key={org.id}
                                     onClick={() => {
-                                        navigate(`/organisations/${org.organisation.slug}/vacancy-requests`)
+                                        user.role === 2 ?
+                                        navigate(`/organisations/${org.organisation.slug}/vacancy-requests`) 
+                                        :
+                                        navigate(`/organisations/${org.organisation.slug}/forms`)
                                     }}
                                 >
                                     <OrganisationCard
