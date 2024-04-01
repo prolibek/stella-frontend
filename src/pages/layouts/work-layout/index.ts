@@ -1,1 +1,1 @@
-export { WorkLayout } from './ui';
+export { WorkLayout, StructureLayout } from './ui';

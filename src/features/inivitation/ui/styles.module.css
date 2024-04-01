@@ -1,0 +1,98 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 10;
+    bottom: 200px;
+}
+
+.headText {
+    font-size: 20px;
+    font-weight: 550;
+}
+
+.inp {
+    height: 24px;
+    font-size: 14px;
+    padding-left: 5px;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.closeBtn {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.closeBtn:hover {
+    cursor: pointer;
+}
+
+.emailTags {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 40px;
+    gap: 5px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid rgb(191, 191, 191);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.emailTag {
+    height: 24px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+.removeTagBtn {
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: .1s;
+}
+
+.removeTagBtn:hover {
+    background: rgb(163, 163, 163);
+    border-radius: 100px;
+}
+
+.inp {
+    flex-grow: 1;
+}
+
+.btn {
+    width: 150px;
+    align-self: flex-end;
+    margin-top: auto;
+}

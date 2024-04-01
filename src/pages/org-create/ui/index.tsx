@@ -24,7 +24,6 @@ export const CreateOrganisationPage = () => {
             err.key = "This field must not be empty.";
         setErrors(err);
         if(err.orgName || err.key) {
-            console.log("asdasdasdasd;laksd;l")
             return;
         }
 

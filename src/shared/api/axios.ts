@@ -22,8 +22,6 @@ $api.interceptors.response.use(
     (res) => res,
     async (error) => {
         const req = error.config;
-        console.log(error.config);
-        console.log(error.response);
         if(req._retry === undefined) req._retry = false;
         if(!req._retry && error.response.status === 401 && error.response) {
             req._retry = true;

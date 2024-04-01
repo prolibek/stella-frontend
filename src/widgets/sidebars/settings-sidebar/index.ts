@@ -1,0 +1,1 @@
+export { StructureSidebar } from './ui'

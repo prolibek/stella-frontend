@@ -1,11 +1,12 @@
-import { LandingPage } from "@/pages/landing-page"
-import { RegisterPage } from "@/pages/register-page"
-import { SignInPage } from "@/pages/signin-page"
+import { LandingPage } from "./pages/landing-page"
+import { RegisterPage } from "./pages/register-page"
+import { SignInPage } from "./pages/signin-page"
 import { Dashboard } from "./pages/dashboard"
 import { CreateOrganisationPage } from "./pages/org-create"
-import { ManagerVacancyRequestsPage } from "./pages/manager-pages/vacancy-requests"
-import { FormPage } from "./pages/hr-pages/form-page"
-import { CreateFormPage } from "./pages/hr-pages/create-form-page"
+import { ManagerVacancyRequestsPage } from "./pages/manager/vacancy-requests"
+import { FormPage } from "./pages/hr/form/list"
+import { CreateFormPage } from "./pages/hr/form/create"
+import { Members } from "./pages/hr/structure/members"
 
 export const publicRoutes = [
     { path: '/', element: <LandingPage/> },
@@ -24,5 +25,6 @@ export const privateManagerRoutes = [
 
 export const privateHRRoutes = [
     { path: '/organisations/:key/forms', element: <FormPage/>},
-    { path: '/organisations/:key/forms/create', element: <CreateFormPage/> }
+    { path: '/organisations/:key/forms/create', element: <CreateFormPage/> },
+    { path: '/organisations/:key/structure/members', element: <Members/> },
 ]

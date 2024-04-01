@@ -1,0 +1,35 @@
+.membersTable {
+    width: 100%;
+    min-width: 1080px;
+    border-collapse: collapse;
+}
+
+.columnName {
+    text-align: left;
+    font-weight: 550;
+    padding: 15px;
+}
+
+.initRow {
+    border-bottom: 1px solid rgb(191, 191, 191);
+    height: 35px;
+}
+
+.memberRow {
+    height: 42px;
+}
+
+.memberRow td {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.memberRow:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+
+.tableContainer {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+}

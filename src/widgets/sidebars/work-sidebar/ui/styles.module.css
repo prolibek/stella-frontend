@@ -1,0 +1,41 @@
+.sidebarBtn {
+    background: transparent;
+    border: none;
+    padding-left: 20px;
+    font-size: 16px;
+    width: 90%;
+    height: 40px;
+    transition: .2s;
+    border-radius: 4px;
+    font-weight: 550;
+    text-align: left;
+}
+
+.sidebarBtnContainer {
+    width: 90%;
+}
+
+.sidebarBtn:hover {
+    cursor: pointer;
+    background-color: #F1F5FF;
+}
+
+.orgInfo {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.orgInfo h1 {
+    font-size: 16px;
+    font-weight: 625;
+}
+
+.orgInfo img {
+    height: 20px;
+    width: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F1F5FF;
+}

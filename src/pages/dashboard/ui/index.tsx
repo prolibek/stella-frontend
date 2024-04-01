@@ -13,7 +13,7 @@ export const Dashboard = () => {
 
     useEffect(() => {
         (async () => {
-            let response = await $api.get("/public/users/me/organisations/");
+            let response = await $api.get("/api/v1/public/users/me/organisations/");
             setOrganisationList(response.data);
         })();
     }, [])

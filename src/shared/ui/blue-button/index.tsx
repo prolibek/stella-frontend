@@ -1,8 +1,8 @@
 import s from './styles.module.css'
 
 type BlueButtonProps = {
-    onClick: () => void | null,
-    style: any,
+    onClick?: () => void | null,
+    style?: any,
     children?: React.ReactNode
 }
 

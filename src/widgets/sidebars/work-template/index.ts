@@ -1,0 +1,1 @@
+export { WorkSidebarTemplate } from './ui';
