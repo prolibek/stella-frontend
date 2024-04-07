@@ -1,10 +1,10 @@
+import ReactQuill from 'react-quill';
 import s from './styles.module.css'
 import BlueButton from '@/shared/ui/blue-button';
 
 export const renderElements = (field, handleAddOption, updateOption, deleteOption) => {
     switch (field.type) {
         case 'Short':
-        case 'Long':
         case 'Date':
         case 'Number':
             return (
@@ -48,6 +48,12 @@ export const renderElements = (field, handleAddOption, updateOption, deleteOptio
                     </div>
                 </div>
             );
+        case 'Long':
+            return (
+                <ReactQuill 
+                readOnly={true} 
+                className={s.quill}/>
+            )
         default:
             return <span>Unsupported type: {field.type}</span>;
     }

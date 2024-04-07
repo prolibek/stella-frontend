@@ -9,10 +9,14 @@
     border-radius: 4px;
     font-weight: 550;
     text-align: left;
+    display: flex;
+    align-items: center;
 }
 
 .sidebarBtnContainer {
-    width: 90%;
+    width: 95%;
+    text-decoration: none;
+    color: black;
 }
 
 .sidebarBtn:hover {

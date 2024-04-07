@@ -1,3 +1,5 @@
 export const useTenantName = () => {
-    return window.location.pathname.split('/')[2]
+    if(window.location.pathname.split('/')[1] == 'organisations')
+        return window.location.pathname.split('/')[2]
+    return null
 }

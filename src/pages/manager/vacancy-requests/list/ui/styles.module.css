@@ -1,0 +1,88 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.headPart h1 {
+    font-weight: 550;
+    font-size: 24px;
+}
+
+.dataFilter {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.content {
+    margin-top: 25px;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+}
+
+.vrList {
+    text-align: center;
+    width: 40%;
+    border-right: 1px solid rgb(191, 191, 191);
+}
+
+.noVac {
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+.detailWindow {
+    width: 70%;
+    height: 100px;
+}
+
+.requestItem {
+    border-bottom: 1px solid rgb(191, 191, 191);
+    padding: 15px;
+    text-align: left;
+    transition: .1s;
+}
+
+.requestItem:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+.requestItem h2 {
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.requestHead {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.requestHead h2 {
+    font-weight: 550;
+}
+
+.detailContent {
+    padding: 20px;
+}
+
+.dataItem {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dataItem h3 {
+    font-weight: 520;
+    margin-bottom: 5px;
+}
+
+.dataItem span ul {
+    margin-left: 15px;
+}

@@ -122,7 +122,7 @@ export const CreateFormPage = () => {
             </HeadPart>
             <div className={s.content}>
                 <div className={s.fieldList}>
-                    <p className={s.infoPar}>*Budget limit and job title fields will be included automatically.</p>
+                    <p className={s.infoPar}>*Job title (position) fields will be included automatically.</p>
                     <input 
                         type="text" 
                         placeholder="Enter the form name" 

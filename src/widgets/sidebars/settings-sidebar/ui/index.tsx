@@ -9,8 +9,8 @@ export const StructureSidebar = () => {
     return ( 
         <WorkSidebarTemplate>
             { 
-                items.map((item) => {
-                    return <SidebarButton link={`/organisations/${tenant}${item.link}`}>{item.text}</SidebarButton>
+                items.map((item, index) => {
+                    return <SidebarButton key={index} link={`/organisations/${tenant}${item.link}`}>{item.text}</SidebarButton>
                 })
             }
         </WorkSidebarTemplate>

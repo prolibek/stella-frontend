@@ -1,14 +1,14 @@
 export const HRItems = [
-    { link: '/', text: 'Resumes' },
-    { link: '/', text: 'Vacancies' },
-    { link: '/', text: 'Applications' },
-    { link: '/', text: 'Analytics' },
+    { link: '/resumes', text: 'Resumes' },
+    { link: '/vacancies', text: 'Vacancies' },
+    { link: '/applications', text: 'Applications' },
+    { link: '/analytics', text: 'Analytics' },
     { link: '/forms', text: 'Forms' },
     { link: '/structure/members', text: 'Settings' },
 ]
 
 export const managerItems = [
-    { link: '/', text: 'My vacancy requests' },
-    { link: '/', text: 'My vacancies' },
-    { link: '/', text: 'Resumes' },
+    { link: '/vacancy-requests', text: 'My vacancy requests' },
+    { link: '/vacancies', text: 'My vacancies' },
+    { link: '/resumes', text: 'Resumes' },
 ]

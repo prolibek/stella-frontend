@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import s from './styles.module.css';
 import BlueButton from '@/shared/ui/blue-button';
+import { validateEmail } from '@/features/auth/lib/validateEmail';
 
 export const InviteModal = ({ isOpen, onClose, onInvite, emails, setEmails }) => {
     const [inputValue, setInputValue] = useState('');
@@ -18,7 +19,7 @@ export const InviteModal = ({ isOpen, onClose, onInvite, emails, setEmails }) =>
     };
 
     const handleInputKeyDown = (e) => {
-        if (e.key === 'Enter' && inputValue) {
+        if (e.key === 'Enter' && inputValue && validateEmail(inputValue)) {
             // Prevent form submission if used within a form
             e.preventDefault();
             if (!emails.includes(inputValue)) { // Prevent adding duplicates

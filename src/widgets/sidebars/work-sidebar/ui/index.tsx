@@ -18,16 +18,16 @@ export const Sidebar = () => {
                     user.role === 1 ?
                     <>
                         { 
-                            HRItems.map((item) => {
-                                return <SidebarButton link={`/organisations/${tenant}${item.link}`}>{item.text}</SidebarButton>
+                            HRItems.map((item, index) => {
+                                return <SidebarButton key={index} link={`/organisations/${tenant}${item.link}`}>{item.text}</SidebarButton>
                             })
                         }
                     </>
                     :
                     <>
                         {
-                            managerItems.map((item) => {
-                                return <SidebarButton link={`/organisations/${tenant}${item.link}`}>{item.text}</SidebarButton>
+                            managerItems.map((item, index) => {
+                                return <SidebarButton key={index} link={`/organisations/${tenant}${item.link}`}>{item.text}</SidebarButton>
                             })
                         }
                     </>

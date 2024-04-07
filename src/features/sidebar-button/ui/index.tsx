@@ -13,11 +13,11 @@ export const SidebarButton:React.FC<SidebarButtonProps> = ({ link, children }) =
             to={link}
             className={s.sidebarBtnContainer} 
         >
-            <button
+            <div
                 className={s.sidebarBtn}
             >
                 {children}
-            </button>
+            </div>
         </Link>
     )
 }

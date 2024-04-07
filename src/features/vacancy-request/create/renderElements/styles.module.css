@@ -1,0 +1,32 @@
+.formInput {
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid rgb(191, 191, 191);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.formInput[type="number"] {
+    width: 50%;
+}
+
+.formInput:focus {
+    outline: none;
+}
+
+.fieldset {
+    border: none;
+    outline: none;
+}
+
+.radioInp::before {
+    width: 15px;
+    height: 15px;
+    border: 1px solid rgb(191, 191, 191);
+    margin-right: 0.5rem;
+    box-shadow: inset 1em 1em var(black);
+}
+
+.quill * {
+    font-size: 15px;
+}

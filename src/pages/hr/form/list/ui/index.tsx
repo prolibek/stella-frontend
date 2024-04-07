@@ -18,7 +18,6 @@ export const FormPage = () => {
         const fetchForms = async () => {
             let response = await $api.get(`/organisations/${tenant}/vacancy-forms/`);
             response = response.data;
-            console.log(response);
             setForms(response);
         }
 

@@ -26,12 +26,11 @@ export const Members = () => {
 
     const handleInvite = async () => {
         if (emails.length === 0) {
-            console.log("No emails to send");
             return;
         }
     
         try {
-            const response = await $api.post(`/organisations/${tenant}/invitations/`, {
+            const response = await $api.post(`/organisations/${tenant}/invitation-create/`, {
                 emails
             });
             
