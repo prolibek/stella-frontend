@@ -3,6 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    flex-grow: 1;
 }
 
 .imageUploader {
@@ -16,6 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 25px;
 }
 
 .cameraIcon {   
@@ -26,4 +30,13 @@
 
 .imageUploader:hover .cameraIcon {
     opacity: 1;
+}   
+
+.inpNLabel {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: 520;
+    font-size: 16px;
 }

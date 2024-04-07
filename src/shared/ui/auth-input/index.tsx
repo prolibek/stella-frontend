@@ -7,6 +7,7 @@ type AuthTextInputProps = {
     type: string;
     onChange: () => void | null;
     value: string;
+    style: any;
 };
 
 const AuthTextInput: React.FC<AuthTextInputProps> = (
@@ -15,9 +16,11 @@ const AuthTextInput: React.FC<AuthTextInputProps> = (
         type="text",
         value,
         onChange,
+        style
     }) => {
     return (
         <input 
+            style={style}
             type={type} 
             placeholder={text} 
             className={s.inp}
