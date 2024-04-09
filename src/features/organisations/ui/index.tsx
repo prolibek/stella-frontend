@@ -18,7 +18,7 @@ export const OrganisationCard: React.FC<OrganisationCardProps> = ({
                 </div>
             </div>
             <div className={s.orgInfo}>
-                <p>{ org.ceo ? org.ceo : "No CEO yet"}</p>
+                <p>{ org.ceo ? `${org.ceo.first_name} ${org.ceo.last_name}` : "No CEO yet"}</p>
             </div>
         </div>
     )    

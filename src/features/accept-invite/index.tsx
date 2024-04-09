@@ -13,7 +13,7 @@ export const AcceptInvite = () => {
     useEffect(() => {
         try {
             const join = async () => {
-                $api.post(`organisations/${tenant}/invitation-accept/`, { token: searchParams.get('token') })
+                await $api.post(`organisations/${tenant}/invitation-accept/`, { token: searchParams.get('token').split('/')[0] })
             }
 
             join();

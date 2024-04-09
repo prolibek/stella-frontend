@@ -27,7 +27,7 @@
 
 .profileMenu {
     width: 300px;
-    box-shadow: 0px 4px 8px -2px rgba(9, 30, 66, 0.25);
+    border: 1px solid rgb(191, 191, 191);
     position: absolute;
     top: 40px;
     right: 0;
@@ -35,7 +35,7 @@
 }
 
 .menuBlock {
-    border-top: 2px solid #d7d7d7;
+    border-top: 1px solid #d7d7d7;
     padding-top: 5px;
     padding-bottom: 5px;
     background: white;

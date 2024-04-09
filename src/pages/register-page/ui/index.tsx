@@ -90,14 +90,20 @@ export const RegisterPage = () => {
                 middle_name: middleName
             }
 
-            const response = await AuthService.register(userData);
+            try {
+                const response = await AuthService.register(userData);
 
-            dispatch(login({
-                accessToken: response.access_token,
-                user: response.user
-            }))
-
-            navigate('/dashboard');
+                dispatch(login({
+                    accessToken: response.access_token,
+                    user: response.user
+                }))
+            
+                navigate('/dashboard');
+            } catch(error) {
+                console.log(userData)
+                console.log(error)
+                setSecondStepErrors({...secondStepErrors, date: "Account already exists."})
+            }
         } else {
             setCurr(curr + 1);
         }

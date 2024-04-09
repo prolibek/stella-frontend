@@ -32,3 +32,5 @@ export const privateHRRoutes = [
     { path: '/organisations/:key/structure/members', element: <Members/> },
     { path: '/organisations/:key/structure/information', element: <OrganisationInformationPage/> }
 ]
+
+export const privateCEORoutes = [...privateManagerRoutes,  ...privateManagerRoutes]

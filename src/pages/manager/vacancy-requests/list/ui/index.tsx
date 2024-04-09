@@ -18,13 +18,13 @@ interface IForm {
 
 export const ManagerVacancyRequestsPage = () => {
     const [ requestsList, setRequestsList ] = useState([]);
-    const [ step, setStep ] = useState(-1);
     const [ isFirstOpen, setIsFirstOpen ] = useState(false);
     const [ isSecondOpen, setIsSecondOpen ] = useState(false);
     const [ formId, setFormId ] = useState("0");
     const [ forms, setForms ] = useState<Array<IForm>>([]);
     const [ detReqId, setDetReqId ] = useState(-1);
     const [ detReq, setDetReq ] = useState({});
+    const [ forApp, setForApp ] = useState(false);
 
     const tenant = useTenantName();
 
@@ -45,14 +45,18 @@ export const ManagerVacancyRequestsPage = () => {
         }
 
         const fetchRequests = async () => {
-            let response = await $api.get(`organisations/${tenant}/vacancy-requests/my/`)
-            setRequestsList(response.data)
-            console.log(response.data)
+            if(!forApp) {
+                const response = await $api.get(`organisations/${tenant}/vacancy-requests/my/`)
+                setRequestsList(response.data)
+            } else {
+                const response = await $api.get(`organisations/${tenant}/vacancy-requests/for_approval/`)
+                setRequestsList(response.data)
+            }
         }
 
         fetchForms();
         fetchRequests();
-    }, [isSecondOpen])
+    }, [isSecondOpen, isFirstOpen, forApp])
 
     return (
         <WorkLayout>
@@ -72,6 +76,20 @@ export const ManagerVacancyRequestsPage = () => {
                             +
                         </BlueButton>
                     </div>
+                </div>
+                <div className={s.sections}>
+                    <span 
+                        className={`${s.sect} ${forApp ? '' : s.underline}`}
+                        onClick={() => setForApp(false)}
+                    >
+                        Your requests   
+                    </span>
+                    <span 
+                        className={`${s.sect} ${forApp ? s.underline : ''}`}
+                        onClick={() => setForApp(true)}
+                    >
+                        For your approval   
+                    </span>
                 </div>
                 <div className={s.content}>
                     <div className={s.vrList}>
@@ -95,15 +113,17 @@ export const ManagerVacancyRequestsPage = () => {
                                 <h2>{detReq.job_title}</h2>
                                 <span>{detReq.date_created}</span>
                             </div>
-                            {
-                                detReq.public_data &&
-                                Object.entries(detReq.public_data).map(([key, value], index) => (
-                                    <div className={s.dataItem} key={index}>    
-                                        <h3>{key}:</h3>
-                                        <span dangerouslySetInnerHTML={{__html: value}}></span>
-                                    </div>
-                                ))
-                            }
+                            <div className={s.detailInfo}>
+                                {
+                                    detReq.public_data &&
+                                    Object.entries(detReq.public_data).map(([key, value], index) => (
+                                        <div className={s.dataItem} key={index}>    
+                                            <h3>{key}:</h3>
+                                            <span dangerouslySetInnerHTML={{__html: value}}></span>
+                                        </div>
+                                    ))
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import s from './styles.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -13,6 +13,21 @@ export const WorkHeader = () => {
     const navigate = useNavigate();
 
     const [ isOpen, setIsOpen ] = useState(false);
+    const menuRef = useRef(); 
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsOpen(false); 
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside, true);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        };
+    }, []);
 
     return (
         <div className={s.header}>
@@ -31,7 +46,7 @@ export const WorkHeader = () => {
                     {   
                         isOpen &&
                         <div 
-                            className={s.profileMenu}
+                            ref={menuRef} className={s.profileMenu}
                         >
                             <button className={s.menuButton}>
                                 <div className={s.innerMenuButton}>

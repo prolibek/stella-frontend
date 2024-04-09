@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IUser {
   id: number,
@@ -39,7 +39,6 @@ export const authSlice = createSlice({
     },
   }
 });
-
 
 export const { login, logout } = authSlice.actions;
 

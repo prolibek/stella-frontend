@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import { publicRoutes, privateManagerRoutes, privateHRRoutes, privateCommonRoutes } from "@/routes";
+import { publicRoutes, privateManagerRoutes, privateHRRoutes, privateCommonRoutes, privateCEORoutes } from "@/routes";
 
 import { useSelector } from "react-redux";
 import { ReactNode } from "react";

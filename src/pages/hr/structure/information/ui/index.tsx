@@ -18,8 +18,7 @@ export const OrganisationInformationPage = () => {
         const fetchOrgInfo = async () => {
             const response = await $api.get(`organisations/${tenant}/information/`);
             const { ceo, name, avatar } = response.data;
-            setOrgInfo({ ...orgInfo, ceo: ceo || '', name: name || '', avatar: avatar, avatarURL: avatar });
-            console.log(response.data);
+            setOrgInfo({ ...orgInfo, ceo: ceo || '', name: name || '', avatar: null, avatarURL: avatar });
         };
 
         fetchOrgInfo();
@@ -56,9 +55,7 @@ export const OrganisationInformationPage = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log("Update successful", response.data);
         } catch (error) {
-            console.error("Update failed", error);
         }
     };
 
@@ -86,7 +83,7 @@ export const OrganisationInformationPage = () => {
                             ref={fileInputRef} 
                             style={{display: 'none'}} 
                             onChange={(e) => {
-                                setOrgInfo({ ...orgInfo, avatar: e.target.files[0], avatarUrl: URL.createObjectURL(e.target.files[0]) });
+                                setOrgInfo({ ...orgInfo, avatar: e.target.files[0], avatarUrl: e.target.files[0] });
                             }}
                         />
                         <img src='/images/cameraIcon.png' className={s.cameraIcon} />
@@ -109,7 +106,7 @@ export const OrganisationInformationPage = () => {
                     <br/>
                     <span style={{color:"red", fontSize: 12}}>*CEO will have wide range of rights</span>
                     <AuthSelect
-                        value={orgInfo.ceo ? orgInfo.ceo.toString() : ''}
+                        value={orgInfo.ceo ? orgInfo.ceo.id : ''}
                         onChange={(e) => setOrgInfo({...orgInfo, ceo: e.target.value ? Number(e.target.value) : null})}
                         options={members}
                     />
