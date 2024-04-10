@@ -40,7 +40,7 @@
 
 .detailWindow {
     width: 70%;
-    height: 100px;
+    height: 100%;
 }
 
 .requestItem {
@@ -72,6 +72,9 @@
 
 .detailContent {
     padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .dataItem {
@@ -112,4 +115,10 @@
 
 .underline {
     text-decoration: underline;
+}
+
+.btns {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
 }

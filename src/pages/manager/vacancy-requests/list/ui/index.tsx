@@ -25,8 +25,16 @@ export const ManagerVacancyRequestsPage = () => {
     const [ detReqId, setDetReqId ] = useState(-1);
     const [ detReq, setDetReq ] = useState({});
     const [ forApp, setForApp ] = useState(false);
+    const [ comments, setComments ] = useState("");
 
     const tenant = useTenantName();
+
+    const approveVacancyRequest = async (approve: boolean) => {
+        await $api.post(`organisations/${tenant}/vacancy-requests/${detReqId}/approve/`, {
+            status: approve ? 2 : 3,
+            comments: comments
+        })
+    }
 
     useEffect(() => {
         const fetchRequest = async () => {
@@ -37,6 +45,11 @@ export const ManagerVacancyRequestsPage = () => {
         if(detReqId !== -1)
             fetchRequest()
     }, [detReqId])
+
+    useEffect(() => {
+        setDetReqId(-1)
+        setDetReq({})
+    }, [forApp])
 
     useEffect(() => {
         const fetchForms = async () => {
@@ -101,7 +114,9 @@ export const ManagerVacancyRequestsPage = () => {
                                 <div className={s.requestItem} onClick={() => setDetReqId(item.id)}>
                                     <div className={s.requestHead}>
                                         <h2>{item.job_title}</h2>
-                                        <span>{item.date_created}</span>
+                                        <div>
+                                            <span>{item.date_created}</span>
+                                        </div>
                                     </div>
                                 </div>
                             ))
@@ -124,6 +139,22 @@ export const ManagerVacancyRequestsPage = () => {
                                     ))
                                 }
                             </div>
+                            {
+                                detReq.public_data && forApp &&
+                                <div className={s.btns}>
+                                    <BlueButton
+                                        onClick={() => approveVacancyRequest(true)}
+                                    >
+                                        Approve
+                                    </BlueButton>
+                                    <BlueButton 
+                                        onClick={() => approveVacancyRequest(false)}
+                                        style={{backgroundColor: "rgb(165, 58, 58)"}}
+                                    >
+                                        Deny
+                                    </BlueButton>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
