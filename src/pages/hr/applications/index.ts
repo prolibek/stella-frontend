@@ -1,0 +1,1 @@
+export { ApplicationHRPage } from './ui'

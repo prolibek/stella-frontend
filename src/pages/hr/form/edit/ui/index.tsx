@@ -1,26 +1,45 @@
-import { useState } from 'react';
-import { WorkLayout } from '@/pages/layouts/work-layout';
-import s from './styles.module.css';
-import { renderElements } from  '../lib/renderElements';
-import BlueButton from '@/shared/ui/blue-button';
-import $api from '@/shared/api/axios';
-import { useNavigate } from 'react-router-dom';
-import { useTenantName } from '@/shared/hooks/useTenantName';
-import HeadPart from '@/shared/ui/head-part';
-import { SetButtons } from '@/entities/form/set-buttons';
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { WorkLayout } from "@/pages/layouts/work-layout"
+import { useTenantName } from "@/shared/hooks/useTenantName";
+import BlueButton from "@/shared/ui/blue-button";
+import HeadPart from "@/shared/ui/head-part";
+import { SetButtons } from "@/entities/form/set-buttons";
+import $api from "@/shared/api/axios";
+import { renderElements } from  '../../create/lib/renderElements';
+import s from './styles.module.css'
 
-export const CreateFormPage = () => {
+export const EditFormPage = () => {
     const fieldTypes = ['Short', 'Long', 'Select', 'Multiselect', 'Date', 'Number'];
 
-    const [fields, setFields] = useState([
-        { id: Date.now(), name: "", type: "Short", options: [] }
-    ]);
+    const params = useParams();
+
+    const tenant = useTenantName();
+
+    const [fields, setFields] = useState([]);
+
+    useEffect(() => {
+        const fetchForm = async () => {
+            const response = await $api.get(`organisations/${tenant}/vacancy-forms/${params.id}/`);
+            console.log(response.data)
+            setFields(response.data.fields.map((item) => (
+                {
+                    id: item.id,
+                    name: item.field_name,
+                    type: fieldTypes[Number(item.field_type) - 1],
+                    options: item.options ? item.options.map((opt) => opt.option) : []
+                }
+            )))
+        }
+
+        fetchForm()
+    }, [])
 
     const [formName, setFormName] = useState("Form 1");
 
     const navigate = useNavigate();
 
-    const handleAPIRequest = async () => {
+    const handleAPIRequest = () => {
         const requestData = {
             name: formName,
             fields: fields.map(field => ({
@@ -33,7 +52,7 @@ export const CreateFormPage = () => {
         try {
             const tenant = useTenantName()
 
-            const response = await $api.post(`organisations/${tenant}/vacancy-forms/`, requestData);
+            const response = $api.put(`organisations/${tenant}/vacancy-forms/`, requestData);
             
             navigate(`/organisations/${tenant}/forms`)
         } catch (error) {
@@ -174,5 +193,5 @@ export const CreateFormPage = () => {
                 </div>
             </div>
         </WorkLayout>
-    );
-};
+    )
+}

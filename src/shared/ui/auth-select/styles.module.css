@@ -2,7 +2,7 @@
     min-width: 300px;
     min-height: 50px;
     border: 1px solid #697CA6;
-    color: #697CA6;
+    color: black;
     background: transparent;
     font-style: normal;
     font-size: 1rem;
@@ -11,6 +11,7 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
+    font-weight: 500;
 }
 
 .select-choice-container {

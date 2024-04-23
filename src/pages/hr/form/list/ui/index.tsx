@@ -16,9 +16,9 @@ export const FormPage = () => {
 
     useEffect(() => {
         const fetchForms = async () => {
-            let response = await $api.get(`/organisations/${tenant}/vacancy-forms/`);
-            response = response.data;
-            setForms(response);
+            const response = await $api.get(`/organisations/${tenant}/vacancy-forms/`);
+            console.log(response.data)
+            setForms(response.data);
         }
 
         fetchForms();
@@ -38,8 +38,26 @@ export const FormPage = () => {
             </HeadPart>
             <div className={s.content}>
                 <div className={s.info}>
-                    <h1>No forms yet.</h1>
-                    <p>Create your own forms for vacancy requests. With this forms you can require managers to send you vacancy information.</p>
+                    {
+                        forms.length == 0 ?
+                        <>
+                            <h1>No forms yet.</h1>
+                            <p>Create your own forms for vacancy requests. With this forms you can require managers to send you vacancy information.</p>
+                        </>
+                        :
+                        <>
+                            { forms.map((item) => (
+                                <div
+                                    onClick={() => navigate(`/organisations/${tenant}/forms/${item.id}/edit`)}
+                                    className={s.formItem}
+                                >
+                                    <h1>{item.form_title}</h1>
+                                    <p>{new Date(item.date_created).toLocaleDateString()}</p>
+                                    <p>{item.fields_count} fields</p>
+                                </div>
+                            )) }
+                        </>
+                    }   
                 </div>
             </div>
         </WorkLayout>

@@ -30,6 +30,7 @@ export const renderElements = (field, handleAddOption, updateOption, deleteOptio
                                     className={s.textInp}
                                     value={option}
                                     onChange={(e) => updateOption(field.id, optionIndex, e.target.value)}
+                                    onClick={(e) => e.target.select()}
                                 />
                             </div>
                             {

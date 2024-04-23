@@ -18,7 +18,7 @@ export const OrganisationInformationPage = () => {
         const fetchOrgInfo = async () => {
             const response = await $api.get(`organisations/${tenant}/information/`);
             const { ceo, name, avatar } = response.data;
-            setOrgInfo({ ...orgInfo, ceo: ceo || '', name: name || '', avatar: null, avatarURL: avatar });
+            setOrgInfo({ ...orgInfo, ceo: ceo.id || '', name: name || '', avatar: null, avatarURL: avatar });
         };
 
         fetchOrgInfo();
@@ -43,7 +43,7 @@ export const OrganisationInformationPage = () => {
     const changeOrgData = async () => {
         const formData = new FormData();
         formData.append('name', orgInfo.name);
-        formData.append('ceo', orgInfo.ceo);
+        formData.append('ceo', orgInfo.ceo ? orgInfo.ceo : null);
     
         if (orgInfo.avatar) {
             formData.append('avatar', orgInfo.avatar);
@@ -56,6 +56,7 @@ export const OrganisationInformationPage = () => {
                 },
             });
         } catch (error) {
+            console.log(error)
         }
     };
 
@@ -106,7 +107,7 @@ export const OrganisationInformationPage = () => {
                     <br/>
                     <span style={{color:"red", fontSize: 12}}>*CEO will have wide range of rights</span>
                     <AuthSelect
-                        value={orgInfo.ceo ? orgInfo.ceo.id : ''}
+                        value={orgInfo.ceo ? orgInfo.ceo : null}
                         onChange={(e) => setOrgInfo({...orgInfo, ceo: e.target.value ? Number(e.target.value) : null})}
                         options={members}
                     />

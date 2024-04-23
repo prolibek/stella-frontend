@@ -9,6 +9,8 @@ import { CreateFormPage } from "./pages/hr/form/create"
 import { Members } from "./pages/hr/structure/members"
 import { AcceptInvite } from "./features/accept-invite"
 import { OrganisationInformationPage } from "./pages/hr/structure/information"
+import { ApplicationHRPage } from "./pages/hr/applications"
+import { EditFormPage } from "./pages/hr/form/edit"
 
 export const publicRoutes = [
     { path: '/', element: <LandingPage/> },
@@ -17,6 +19,7 @@ export const publicRoutes = [
 ]
 
 export const privateCommonRoutes = [
+    { path: '/', element: <LandingPage/> },
     { path: '/dashboard', element: <Dashboard/>},
     { path: '/create-organisation', element: <CreateOrganisationPage/>},
     { path: '/organisations/:key/join', element: <AcceptInvite/> }
@@ -29,8 +32,12 @@ export const privateManagerRoutes = [
 export const privateHRRoutes = [
     { path: '/organisations/:key/forms', element: <FormPage/>},
     { path: '/organisations/:key/forms/create', element: <CreateFormPage/> },
+    { path: '/organisations/:key/forms/:id/edit', element: <EditFormPage/> },
+
     { path: '/organisations/:key/structure/members', element: <Members/> },
-    { path: '/organisations/:key/structure/information', element: <OrganisationInformationPage/> }
+    { path: '/organisations/:key/structure/information', element: <OrganisationInformationPage/> },
+    
+    { path: '/organisations/:key/applications', element: <ApplicationHRPage/>},
 ]
 
 export const privateCEORoutes = [...privateManagerRoutes,  ...privateManagerRoutes]

@@ -1,14 +1,16 @@
 import { WorkLayout } from '@/pages/layouts/work-layout';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import s from './styles.module.css';
 import BlueButton from '@/shared/ui/blue-button';
 import Modal from '@/shared/ui/modal';
+import HeadPart from '@/shared/ui/head-part';
 import { useTenantName } from '@/shared/hooks/useTenantName';
 import $api from '@/shared/api/axios';
 import 'react-quill/dist/quill.snow.css'; // for snow theme
 import SearchInput from '@/shared/ui/search-input';
 import { FormChooseModal } from '@/features/vacancy-request/choose';
 import { CreateVacancyRequestModal } from '@/features/vacancy-request/create';
+import { RequestItem } from '@/entities/requests/request-item/ui';
 
 
 interface IForm {
@@ -26,6 +28,7 @@ export const ManagerVacancyRequestsPage = () => {
     const [ detReq, setDetReq ] = useState({});
     const [ forApp, setForApp ] = useState(false);
     const [ comments, setComments ] = useState("");
+    const [ searchTerm, setSearchTerm ] = useState("");
 
     const tenant = useTenantName();
 
@@ -39,7 +42,16 @@ export const ManagerVacancyRequestsPage = () => {
     useEffect(() => {
         const fetchRequest = async () => {
             const response = await $api.get(`organisations/${tenant}/vacancy-requests/${detReqId}/`)
-            setDetReq(response.data)
+            setDetReq({
+                ...response.data,
+                date_created: new Date(response.data.date_created).toLocaleDateString("en-US", {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric'
+                })
+            })
         }
 
         if(detReqId !== -1)
@@ -51,6 +63,10 @@ export const ManagerVacancyRequestsPage = () => {
         setDetReq({})
     }, [forApp])
 
+    const filteredRequests = useMemo(() => {
+        return requestsList.filter(item => item.job_title.toLowerCase().includes(searchTerm.toLowerCase()));
+    }, [requestsList, searchTerm]);
+
     useEffect(() => {
         const fetchForms = async () => {
             let response = await $api.get(`organisations/${tenant}/vacancy-forms/`);
@@ -60,10 +76,32 @@ export const ManagerVacancyRequestsPage = () => {
         const fetchRequests = async () => {
             if(!forApp) {
                 const response = await $api.get(`organisations/${tenant}/vacancy-requests/my/`)
-                setRequestsList(response.data)
+                setRequestsList(response.data.map((item) => (
+                    {
+                        ...item,
+                        date_created: new Date(item.date_created).toLocaleDateString("en-US", {
+                            day: '2-digit',
+                            month: 'long',
+                            year: 'numeric',
+                            hour: 'numeric',
+                            minute: 'numeric'
+                        })
+                    }
+                )))
             } else {
                 const response = await $api.get(`organisations/${tenant}/vacancy-requests/for_approval/`)
-                setRequestsList(response.data)
+                setRequestsList(response.data.map((item) => (
+                    {
+                        ...item,
+                        date_created: new Date(item.date_created).toLocaleDateString("en-US", {
+                            day: '2-digit',
+                            month: 'long',
+                            year: 'numeric',
+                            hour: 'numeric',
+                            minute: 'numeric'
+                        })
+                    }
+                )))
             }
         }
 
@@ -77,7 +115,10 @@ export const ManagerVacancyRequestsPage = () => {
                 <div className={s.headPart}>
                     <h1>Your vacancy requests</h1>
                     <div className={s.dataFilter}>
-                        <SearchInput/>
+                        <SearchInput
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                         <BlueButton
                             style={{
                                 height: 35,
@@ -107,27 +148,28 @@ export const ManagerVacancyRequestsPage = () => {
                 <div className={s.content}>
                     <div className={s.vrList}>
                         {
-                            requestsList.length === 0 ?
+                            filteredRequests.length === 0 ?
                             <p className={s.noVac}>No vacancy requests.</p>
                             :
-                            requestsList.map((item) => (
-                                <div className={s.requestItem} onClick={() => setDetReqId(item.id)}>
-                                    <div className={s.requestHead}>
-                                        <h2>{item.job_title}</h2>
-                                        <div>
-                                            <span>{item.date_created}</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            filteredRequests.map((item) => (
+                                <RequestItem 
+                                    req={item} 
+                                    del 
+                                    onDelete={async () => {
+                                        await $api.delete(`organisations/${tenant}/vacancy-requests/${item.id}/`)
+                                        setRequestsList(requestsList.filter((req) => req.id != item.id))
+                                    }}
+                                    onClick={() => setDetReqId(item.id)}
+                                />
                             ))
                         }
                     </div>
                     <div className={s.detailWindow}>
                         <div className={s.detailContent}>
-                            <div className={s.requestHead}>
+                            <HeadPart>
                                 <h2>{detReq.job_title}</h2>
                                 <span>{detReq.date_created}</span>
-                            </div>
+                            </HeadPart>
                             <div className={s.detailInfo}>
                                 {
                                     detReq.public_data &&

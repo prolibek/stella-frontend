@@ -35,57 +35,63 @@ export const WorkHeader = () => {
                 <div className={s.logo}>
                     <StellaLogo/>
                 </div>
-                <div className={s.profileIcon}>
-                    <img 
-                        onClick={() => {
-                            setIsOpen(!isOpen)
-                        }}
-                        src="/images/userIcon.png"
+                <div className={s.rightPart}>
+                    <img
+                        src='/images/notification.png'
                         className={s.iconImg}
                     />
-                    {   
-                        isOpen &&
-                        <div 
-                            ref={menuRef} className={s.profileMenu}
-                        >
-                            <button className={s.menuButton}>
-                                <div className={s.innerMenuButton}>
-                                    <div className={s.viewProfile}>
-                                        <img src="/images/userIcon.png" className={s.userIcon}/>
-                                        <div className={s.emailAndName}>
-                                            <span className={s.fullName}>
-                                                { user.first_name } { user.last_name }
-                                            </span>
-                                            <span className={s.email}>
-                                                { user.email }
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </button>
-                            <div className={s.menuBlock}>
+                    <div className={s.profileIcon}>
+                        <img 
+                            onClick={() => {
+                                setIsOpen(!isOpen)
+                            }}
+                            src="/images/userIcon.png"
+                            className={s.iconImg}
+                        />
+                        {   
+                            isOpen &&
+                            <div 
+                                ref={menuRef} className={s.profileMenu}
+                            >
                                 <button className={s.menuButton}>
                                     <div className={s.innerMenuButton}>
-                                        <span>Settings</span>
+                                        <div className={s.viewProfile}>
+                                            <img src="/images/userIcon.png" className={s.userIcon}/>
+                                            <div className={s.emailAndName}>
+                                                <span className={s.fullName}>
+                                                    { user.first_name } { user.last_name }
+                                                </span>
+                                                <span className={s.email}>
+                                                    { user.email }
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </button>
+                                <div className={s.menuBlock}>
+                                    <button className={s.menuButton}>
+                                        <div className={s.innerMenuButton}>
+                                            <span>Settings</span>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div className={s.menuBlock}>
+                                    <button 
+                                        onClick={async () => {
+                                            await AuthService.logout();
+                                            dispatch(logout());
+                                            navigate("/");
+                                        }}
+                                        className={s.menuButton}
+                                    >
+                                        <div className={s.innerMenuButton}>
+                                            <span>Log out</span>
+                                        </div>
+                                    </button>
+                                </div>
                             </div>
-                            <div className={s.menuBlock}>
-                                <button 
-                                    onClick={async () => {
-                                        await AuthService.logout();
-                                        dispatch(logout());
-                                        navigate("/");
-                                    }}
-                                    className={s.menuButton}
-                                >
-                                    <div className={s.innerMenuButton}>
-                                        <span>Log out</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
         </div>

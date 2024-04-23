@@ -88,3 +88,8 @@
 .userIcon {
     height: 35px;
 }
+
+.rightPart {
+    display: flex;
+    gap: 25px;
+}

@@ -1,8 +1,22 @@
 import LandingLayout from "@/pages/layouts/landing-layout";
 
 import s from './styles.module.css';
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const LandingPage = () => {
+    const navigate = useNavigate()
+
+    const authStatus = useSelector<string>(state => state.auth.status);
+    const user = useSelector<string>(state => state.auth.user);
+
+    useEffect(() => {
+        if(authStatus == 'succeeded') {
+            navigate('/dashboard')
+        }
+    }, [])
+
     return (
         <LandingLayout>
             <div className={s['wrapper']}>
