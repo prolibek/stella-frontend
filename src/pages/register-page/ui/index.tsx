@@ -100,8 +100,6 @@ export const RegisterPage = () => {
             
                 navigate('/dashboard');
             } catch(error) {
-                console.log(userData)
-                console.log(error)
                 setSecondStepErrors({...secondStepErrors, date: "Account already exists."})
             }
         } else {

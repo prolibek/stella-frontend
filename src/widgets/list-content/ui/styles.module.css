@@ -1,0 +1,17 @@
+.detailWindow {
+    width: 70%;
+    height: 100%;
+}
+
+.vrList {
+    text-align: center;
+    width: 40%;
+    border-right: 1px solid rgb(191, 191, 191);
+}
+
+.content {
+    margin-top: 25px;
+    flex-grow: 1;
+    display: flex;
+    border-top: 1px solid rgb(191, 191, 191);
+}

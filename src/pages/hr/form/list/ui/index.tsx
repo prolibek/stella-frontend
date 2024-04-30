@@ -17,7 +17,6 @@ export const FormPage = () => {
     useEffect(() => {
         const fetchForms = async () => {
             const response = await $api.get(`/organisations/${tenant}/vacancy-forms/`);
-            console.log(response.data)
             setForms(response.data);
         }
 

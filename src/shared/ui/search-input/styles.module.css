@@ -8,16 +8,16 @@
 }
 
 .searchContainer {
-    width: 50%;
+    width: 400px;
     display: flex;
     align-items: center;
     position: relative;
     border-radius: 5px;
-    height: 40px;
+    height: 15px;
 }
 
 .searchIcon {
     position: absolute;
     left: 10px;
-    height: 20px;
+    height: 15px;
 }

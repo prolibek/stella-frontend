@@ -17,11 +17,12 @@ export const EditFormPage = () => {
     const tenant = useTenantName();
 
     const [fields, setFields] = useState([]);
+    const [formName, setFormName] = useState("Form 1");
 
     useEffect(() => {
         const fetchForm = async () => {
             const response = await $api.get(`organisations/${tenant}/vacancy-forms/${params.id}/`);
-            console.log(response.data)
+            setFormName(response.data.form_title)
             setFields(response.data.fields.map((item) => (
                 {
                     id: item.id,
@@ -35,12 +36,11 @@ export const EditFormPage = () => {
         fetchForm()
     }, [])
 
-    const [formName, setFormName] = useState("Form 1");
-
     const navigate = useNavigate();
 
-    const handleAPIRequest = () => {
+    const handleAPIRequest = async () => {
         const requestData = {
+            id: params.id,
             name: formName,
             fields: fields.map(field => ({
                 field_name: field.name,
@@ -52,14 +52,13 @@ export const EditFormPage = () => {
         try {
             const tenant = useTenantName()
 
-            const response = $api.put(`organisations/${tenant}/vacancy-forms/`, requestData);
+            await $api.put(`organisations/${tenant}/vacancy-forms/`, requestData);
             
-            navigate(`/organisations/${tenant}/forms`)
         } catch (error) {
-            console.log(error)
             return ;
         }
-    
+        
+        navigate(`/organisations/${tenant}/forms`)
     }
 
     const handleAddOption = (fieldId) => {
@@ -134,7 +133,7 @@ export const EditFormPage = () => {
     return (
         <WorkLayout>
             <HeadPart>
-                <h1>Create organisation form</h1>
+                <h1>Edit organisation form</h1>
                 <BlueButton
                     onClick={handleAPIRequest}
                 >

@@ -56,7 +56,7 @@ export const OrganisationInformationPage = () => {
                 },
             });
         } catch (error) {
-            console.log(error)
+            return ;
         }
     };
 

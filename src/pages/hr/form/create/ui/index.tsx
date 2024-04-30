@@ -37,7 +37,6 @@ export const CreateFormPage = () => {
             
             navigate(`/organisations/${tenant}/forms`)
         } catch (error) {
-            console.log(error)
             return ;
         }
     

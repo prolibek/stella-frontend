@@ -12,6 +12,7 @@ import { FormChooseModal } from '@/features/vacancy-request/choose';
 import { CreateVacancyRequestModal } from '@/features/vacancy-request/create';
 import { RequestItem } from '@/entities/requests/request-item/ui';
 import AuthTextInput from '@/shared/ui/auth-input';
+import { ListContent } from '@/widgets/list-content';
 
 
 interface IForm {
@@ -54,7 +55,6 @@ export const ApplicationHRPage = () => {
 
         const fetchRequests = async () => {
             const response = await $api.get(`organisations/${tenant}/vacancy-requests/fully_approved/`)
-            console.log(response.data)
             setRequestsList(response.data.map((item) => (
                 {
                     ...item,
@@ -79,34 +79,30 @@ export const ApplicationHRPage = () => {
             })
             setRequestsList(requestsList.filter((item) => item.id !== detReqId))
         } catch(error) {
-            console.log(error)
+            return ;
         }
     }
  
     return (
         <WorkLayout>
             <div className={s.wrapper}>
-                <div className={s.headPart}>
-                    <h1>Vacancy applications</h1>
-                    <div className={s.dataFilter}>
-                        <SearchInput
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                    </div>
+                <h1>Vacancy applications</h1>
+                <div className={s.dataFilter}>
+                    <SearchInput
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
                 </div>
-                <div className={s.content}>
-                    <div className={s.vrList}>
-                        {
-                            filteredRequests.length === 0 ?
-                            <p className={s.noVac}>No vacancy requests.</p>
-                            :
-                            filteredRequests.map((item) => (
-                                <RequestItem req={item} onClick={() => setDetReqId(item.id)}/>
-                            ))
-                        }
-                    </div>
-                    <div className={s.detailWindow}>
+                <ListContent 
+                    list = {
+                        filteredRequests.length === 0 ?
+                        <p className={s.noVac}>No vacancy requests.</p>
+                        :
+                        filteredRequests.map((item) => (
+                            <RequestItem req={item} onClick={() => setDetReqId(item.id)}/>
+                        ))
+                    }
+                    content = {
                         <div className={s.detailContent}>
                             <HeadPart>
                                 <h2>{detReq.job_title}</h2>
@@ -134,8 +130,8 @@ export const ApplicationHRPage = () => {
                                 </div>
                             }
                         </div>
-                    </div>
-                </div>
+                    }
+                />
             </div>
         </WorkLayout>
     )

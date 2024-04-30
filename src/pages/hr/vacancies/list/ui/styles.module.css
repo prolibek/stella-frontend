@@ -1,0 +1,68 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.dataFilter {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.noVac {
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+.table {
+    margin-top: 25px;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.table tr {
+    transition: .2s;
+}
+
+.table tr:hover {
+    background-color: #EDEEFF;
+    cursor: pointer;
+}
+
+.table thead tr:hover {
+    background-color: transparent;
+}
+
+.table th {
+    font-weight: 500;
+}
+
+.table th:last-child, .table td:last-child {
+    border-right: none;
+}
+
+.tableContainer {
+    overflow-x: auto;
+    overflow-y: auto; 
+    max-height: 500px; 
+}
+
+.status {
+    width: 50px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #DCFFF1;
+    font-weight: 500;
+}

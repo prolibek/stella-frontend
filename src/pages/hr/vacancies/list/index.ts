@@ -1,0 +1,1 @@
+export { VacancyListHRPage } from './ui'

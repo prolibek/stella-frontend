@@ -11,6 +11,8 @@ import { AcceptInvite } from "./features/accept-invite"
 import { OrganisationInformationPage } from "./pages/hr/structure/information"
 import { ApplicationHRPage } from "./pages/hr/applications"
 import { EditFormPage } from "./pages/hr/form/edit"
+import { VacancyListHRPage } from "./pages/hr/vacancies/list"
+import { VacancyDetailPage } from "./pages/hr/vacancies/detail"
 
 export const publicRoutes = [
     { path: '/', element: <LandingPage/> },
@@ -38,6 +40,9 @@ export const privateHRRoutes = [
     { path: '/organisations/:key/structure/information', element: <OrganisationInformationPage/> },
     
     { path: '/organisations/:key/applications', element: <ApplicationHRPage/>},
+
+    { path: '/organisations/:key/vacancies', element: <VacancyListHRPage/> },
+    { path: '/organisations/:key/vacancies/:id', element: <VacancyDetailPage/> },
 ]
 
 export const privateCEORoutes = [...privateManagerRoutes,  ...privateManagerRoutes]

@@ -10,13 +10,6 @@
     font-size: 24px;
 }
 
-.dataFilter {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
 .content {
     margin-top: 25px;
 }
@@ -27,20 +20,16 @@
     border-top: 1px solid rgb(191, 191, 191);
 }
 
-.vrList {
-    text-align: center;
-    width: 40%;
-    border-right: 1px solid rgb(191, 191, 191);
+.dataFilter {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .noVac {
     margin-top: 25px;
     font-size: 15px;
-}
-
-.detailWindow {
-    width: 70%;
-    height: 100%;
 }
 
 h2 {
