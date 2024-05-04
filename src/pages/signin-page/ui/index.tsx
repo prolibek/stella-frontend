@@ -60,7 +60,7 @@ export const SignInPage = () => {
                     value={email}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setEmail(e.target.value)
-                    }} 
+                    }}
                     text="Email"
                 />
                 <p className={s.error}>{errors.email}</p>

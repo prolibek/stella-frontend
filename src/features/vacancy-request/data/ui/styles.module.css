@@ -1,0 +1,21 @@
+.dataItem h3 {
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.dataItem span {
+    font-size: 18px;
+    font-weight: 450;
+}
+
+.dataItem span * {
+    font-size: 16px;
+}
+
+.dataItem {
+    margin-top: 10px;
+}
+
+.dataItem span ul {
+    margin-left: 15px;
+}

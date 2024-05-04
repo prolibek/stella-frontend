@@ -3,6 +3,10 @@
     font-size: 24px;
 }
 
+.back:hover {
+    cursor: pointer;
+}
+
 .content {
     margin-top: 25px;
     flex-grow: 1;

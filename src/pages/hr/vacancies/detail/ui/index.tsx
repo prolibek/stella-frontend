@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import $api from '@/shared/api/axios'
 import { useTenantName } from '@/shared/hooks/useTenantName'
 import AuthTextInput from '@/shared/ui/auth-input'
+import { VacancyData } from '@/features/vacancy-request/data'
 
 export const VacancyDetailPage = () => {
     const params = useParams()
@@ -34,17 +35,7 @@ export const VacancyDetailPage = () => {
                         <div className={s.infoHead}>
                             <h2>Description</h2>
                         </div>
-                        <div>
-                            {
-                                vacancy.public_data && 
-                                Object.entries(vacancy.public_data).map(([key, value], index) => (
-                                    <div className={s.dataItem} key={index}>    
-                                        <h3>{key}:</h3>
-                                        <span dangerouslySetInnerHTML={{__html: value}}></span>
-                                    </div>
-                                ))
-                            }
-                        </div>
+                        <VacancyData vacancy={vacancy}/>
                     </div>
                     <div className={s.comments}>
                         <h2>Comments</h2>

@@ -1,0 +1,1 @@
+export { VacancyData } from './ui'

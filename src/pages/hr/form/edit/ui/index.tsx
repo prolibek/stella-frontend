@@ -133,7 +133,7 @@ export const EditFormPage = () => {
     return (
         <WorkLayout>
             <HeadPart>
-                <h1>Edit organisation form</h1>
+                <h1><b className={s.back} onClick={() => navigate(-1)}>←</b> Edit organisation form</h1>
                 <BlueButton
                     onClick={handleAPIRequest}
                 >

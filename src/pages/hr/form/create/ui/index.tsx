@@ -114,7 +114,7 @@ export const CreateFormPage = () => {
     return (
         <WorkLayout>
             <HeadPart>
-                <h1>Create organisation form</h1>
+                <h1><b className={s.back} onClick={() => navigate(-1)}>←</b> Create organisation form</h1>
                 <BlueButton
                     onClick={handleAPIRequest}
                 >

@@ -22,9 +22,13 @@ export const publicRoutes = [
 
 export const privateCommonRoutes = [
     { path: '/', element: <LandingPage/> },
+    
     { path: '/dashboard', element: <Dashboard/>},
     { path: '/create-organisation', element: <CreateOrganisationPage/>},
-    { path: '/organisations/:key/join', element: <AcceptInvite/> }
+    { path: '/organisations/:key/join', element: <AcceptInvite/> },
+
+    { path: '/organisations/:key/vacancies/:id', element: <VacancyDetailPage/> },
+    { path: '/organisations/:key/vacancies', element: <VacancyListHRPage/> },
 ]
 
 export const privateManagerRoutes = [
@@ -40,9 +44,6 @@ export const privateHRRoutes = [
     { path: '/organisations/:key/structure/information', element: <OrganisationInformationPage/> },
     
     { path: '/organisations/:key/applications', element: <ApplicationHRPage/>},
-
-    { path: '/organisations/:key/vacancies', element: <VacancyListHRPage/> },
-    { path: '/organisations/:key/vacancies/:id', element: <VacancyDetailPage/> },
 ]
 
 export const privateCEORoutes = [...privateManagerRoutes,  ...privateManagerRoutes]

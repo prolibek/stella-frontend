@@ -4,6 +4,7 @@ import { useTenantName } from "@/shared/hooks/useTenantName";
 import { useEffect, useState } from "react";
 import { WorkLayout } from "@/pages/layouts/work-layout";
 import SearchInput from "@/shared/ui/search-input";
+import { useSelector } from 'react-redux';
 
 import $api from '@/shared/api/axios';
 import { useNavigate } from 'react-router-dom';
@@ -12,10 +13,11 @@ export const VacancyListHRPage = () => {
     const [vacanciesList, setVacanciesList] = useState([]);
     const tenant = useTenantName();
     const navigate = useNavigate();
+    const user = useSelector<string>(state => state.auth.user.role);
 
     useEffect(() => {
         const fetchVacancies = async () => {
-            const response = await $api.get(`organisations/${tenant}/vacancies/`);
+            const response = await $api.get(`organisations/${tenant}/vacancies/${user.role == 2 ? "my/" : ""}`);
             console.log(response.data);
             setVacanciesList(response.data);
         };
@@ -32,7 +34,7 @@ export const VacancyListHRPage = () => {
                 </div>
                 <div className={s.tableContainer}>
                     {vacanciesList.length === 0 ? (
-                        <p className={s.noVac}>No vacancy requests.</p>
+                        <p className={s.noVac}>No vacancies yet.</p>
                     ) : (
                         <table className={s.table}>
                             <thead>
