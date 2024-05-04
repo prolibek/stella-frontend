@@ -37,6 +37,7 @@ export const VacancyListHRPage = () => {
                         <table className={s.table}>
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Job Title</th>
                                     <th>Status</th>
                                     <th>Created on</th>
@@ -45,11 +46,14 @@ export const VacancyListHRPage = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {vacanciesList.map((item) => (
+                                {vacanciesList.map((item, index) => (
                                     <tr 
-                                        key={item.id}
+                                        key={item.id}   
                                         onClick={() => navigate(`/organisations/${tenant}/vacancies/${item.id}`)}
                                     >
+                                        <td>
+                                            {index+1}
+                                        </td>
                                         <td
                                             style={{width: 200}}
                                         >{item.job_title}</td>
@@ -67,7 +71,7 @@ export const VacancyListHRPage = () => {
                                         <td
                                             style={{width: 150}}
                                         >{new Date(item.date_created).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</td>
-                                        <td>{item.owner.first_name} {item.owner.last_name}</td>
+                                        <td style={{width: 250}}>{item.owner.first_name} {item.owner.last_name}</td>
                                         <td
                                             style={{width: 200}}
                                         >

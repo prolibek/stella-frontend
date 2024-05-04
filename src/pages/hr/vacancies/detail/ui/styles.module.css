@@ -1,0 +1,96 @@
+.mainWrapper {
+    height: calc(100% - 28px);
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.dataItem h3 {
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.dataItem span {
+    font-size: 18px;
+    font-weight: 450;
+}
+
+.dataItem {
+    margin-top: 10px;
+}
+
+.infoHead h2 {
+    font-weight: 560;
+    font-size: 20px;
+}
+
+.left {
+    margin-top: 25px;
+    width: 50%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.comments {
+    margin-top: 20px;
+}
+
+.comments h2 {
+    font-size: 20px;
+}
+
+.commentsInput {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.commentsInput img {
+    height: 30px;
+}
+
+.commentsInput img:hover {
+    cursor: pointer;
+}
+
+.commentsInput input {
+    width: calc(90% - 50px);
+    padding: 7.5px 7.5px 7.5px 14px;
+    font-weight: 540;
+}
+
+.rightWrapper {
+    height: 100%;
+    width: 50%;
+    background-color: rgb(246, 246, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.back:hover {
+    cursor: pointer;
+}
+
+.vacancyMenu {
+    display: flex;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.vacButton {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.borderBottom {
+    text-decoration: underline;
+}
+
+.vacButton:hover {
+    cursor: pointer;
+}
