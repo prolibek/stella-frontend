@@ -1,0 +1,98 @@
+.dataFilter {
+    display: flex;
+    margin-top: 20px;
+}
+
+.viewType {
+    margin-top: 25px;
+}
+
+.viewType ul {
+    display: flex;
+    list-style-type: none;
+    font-weight: 550;
+    font-size: 18px;
+    gap: 50px;
+}
+
+.viewType ul li:hover {
+    cursor: pointer;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.photoForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1.2px solid rgb(50, 50, 50);
+    color: rgb(50, 50, 50);
+    width: 150px;
+    height: 200px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.photoForm span {
+    color: gray;
+}
+
+.photoForm:hover {
+    border: 1.2px solid darkgray;
+}
+
+.fileForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1.2px solid rgb(50, 50, 50);
+    width: 600px;
+    height: 200px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.fileForm span {
+    color: gray;
+}
+
+.fileForm:hover {
+    border: 1.2px solid darkgray;
+}
+
+.fileLine {
+    display: flex;
+    gap: 20px;
+}
+
+.inp {
+    border: none;
+    outline: none;
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    border-bottom: 1px solid rgb(191, 191, 191);
+    padding-left: 10px;
+}
+
+.resumeInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.resumeLine {
+    width: 95%;
+    display: flex;
+    justify-content: center; 
+    gap: 20px;
+    margin-top: 30px;
+}

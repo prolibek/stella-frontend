@@ -11,6 +11,7 @@ import SearchInput from '@/shared/ui/search-input';
 import { FormChooseModal } from '@/features/vacancy-request/choose';
 import { CreateVacancyRequestModal } from '@/features/vacancy-request/create';
 import { RequestItem } from '@/entities/requests/request-item/ui';
+import { VacancyData } from '@/features/vacancy-request/data';
 
 
 interface IForm {
@@ -171,15 +172,7 @@ export const ManagerVacancyRequestsPage = () => {
                                 <span>{detReq.date_created}</span>
                             </HeadPart>
                             <div className={s.detailInfo}>
-                                {
-                                    detReq.public_data &&
-                                    Object.entries(detReq.public_data).map(([key, value], index) => (
-                                        <div className={s.dataItem} key={index}>    
-                                            <h3>{key}:</h3>
-                                            <span dangerouslySetInnerHTML={{__html: value}}></span>
-                                        </div>
-                                    ))
-                                }
+                                <VacancyData vacancy={detReq}/>
                             </div>
                             {
                                 detReq.public_data && forApp &&

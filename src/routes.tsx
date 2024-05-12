@@ -13,6 +13,7 @@ import { ApplicationHRPage } from "./pages/hr/applications"
 import { EditFormPage } from "./pages/hr/form/edit"
 import { VacancyListHRPage } from "./pages/hr/vacancies/list"
 import { VacancyDetailPage } from "./pages/hr/vacancies/detail"
+import { ResumeListPage } from "./pages/hr/resumes"
 
 export const publicRoutes = [
     { path: '/', element: <LandingPage/> },
@@ -44,6 +45,8 @@ export const privateHRRoutes = [
     { path: '/organisations/:key/structure/information', element: <OrganisationInformationPage/> },
     
     { path: '/organisations/:key/applications', element: <ApplicationHRPage/>},
+    
+    { path: '/organisations/:key/resumes', element: <ResumeListPage/>},
 ]
 
 export const privateCEORoutes = [...privateManagerRoutes,  ...privateManagerRoutes]
