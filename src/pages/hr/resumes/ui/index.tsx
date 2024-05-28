@@ -8,11 +8,15 @@ import HeadPart from '@/shared/ui/head-part'
 import Modal from '@/shared/ui/modal'
 import ReactQuill from 'react-quill'
 
-import pdfjs from 'pdfjs-dist';
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 import mammoth from 'mammoth'
 
+import axios from 'axios'
+import $api from '@/shared/api/axios'
+import { useTenantName } from '@/shared/hooks/useTenantName'
+
 export const ResumeListPage = () => {
+    const tenant = useTenantName();
+
     const getFileType = (file) => {
         const fileName = file.name;
         const extension = fileName.split('.').pop().toLowerCase();
@@ -68,14 +72,6 @@ export const ResumeListPage = () => {
         return text;
     };
     
-    const [selectedView, setSelectedView ] = useState(0);
-    const [isOpen, setIsOpen] = useState(false);
-    const [resumeImage, setResumeImage] = useState(null);
-    const [files, setFiles] = useState([]);
-    const [fileName, setFileName] = useState("No file was uploaded.");
-
-    const [text, setText] = useState("");
-    
 
     const getFileIcon = (filename) => {
         const extension = filename.split('.').pop().toLowerCase();
@@ -97,6 +93,43 @@ export const ResumeListPage = () => {
         return filename.length > maxLength ? `${filename.substring(0, maxLength)}...` : filename;
     };
 
+    const sendDataToServer = async (formData) => {
+        try {
+            const response = await $api.post(`organisations/${tenant}/resumes/`, formData);
+            console.log('Response from server:', response.data);
+        } catch (error) {
+            console.error('Error sending data to server:', error);
+        }
+    };    
+
+    const handleSubmit = async () => {
+        const formData = new FormData();
+    
+        files.forEach((file, index) => {
+            formData.append('files', file);
+        });
+    
+        formData.append('image', resumeImage);
+        formData.append('text', text);
+        formData.append('full_name', fullName);
+        formData.append('birth_date', birthDate);
+        formData.append('email', email);
+        formData.append('phonenumber', phoneNumber);
+    
+        await sendDataToServer(formData);
+    };
+
+    const [selectedView, setSelectedView ] = useState(0);
+    const [isOpen, setIsOpen] = useState(false);
+    const [resumeImage, setResumeImage] = useState(null);
+    const [files, setFiles] = useState([]);
+    const [fileName, setFileName] = useState("No file was uploaded.");
+
+    const [text, setText] = useState("");
+    const [fullName, setFullName] = useState("");
+    const [birthDate, setBirthDate] = useState("");
+    const [email, setEmail] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     
     return (
         <WorkLayout>
@@ -229,11 +262,19 @@ export const ResumeListPage = () => {
                                 placeholder="Name" 
                                 className={s.inp}
                                 style={{width:"65%"}}
+                                value={fullName}
+                                onChange={(e) => setFullName(e.target.value)}
                             />
                             <input 
                                 placeholder="Age" 
+                                type="date"
                                 className={s.inp}
                                 style={{width:"35%"}}
+                                value={birthDate}
+                                onChange={(e) => {
+                                    setBirthDate(e.target.value)
+                                    console.log(birthDate)
+                                }}
                             />
                         </div>
                         <div className={s.resumeLine}>
@@ -241,18 +282,30 @@ export const ResumeListPage = () => {
                                 placeholder="Email" 
                                 className={s.inp}
                                 style={{width:"50%"}}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <input 
                                 type="tel"
                                 placeholder="Phone number" 
                                 className={s.inp}
                                 style={{width:"50%"}}
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
                             />
                         </div>
                     </div>
                     <ReactQuill style={{marginTop:40}} value={text} onChange={setText}/>
                     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                        <BlueButton style={{marginTop: 20, width: 150}}>Save</BlueButton>
+                        <BlueButton 
+                            onClick={() => {
+                                handleSubmit()
+                                setIsOpen(false)
+                            }}
+                            style={{marginTop: 20, width: 150}}
+                        >
+                            Save
+                        </BlueButton>
                     </div>
                 </div>
             </Modal>
