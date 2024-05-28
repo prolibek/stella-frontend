@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import s from './styles.module.css';
 
 interface ModalProps {
@@ -9,15 +9,29 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ children, isOpen, onClose, style }) => {
+    const modalRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+                onClose();
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener('mousedown', handleOutsideClick);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, [isOpen, onClose]);
+
     if (!isOpen) return null;
 
-    const handleModalClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        e.stopPropagation();
-    };
-
     return (
-        <div className={s.overlay} onClick={onClose}>
-            <div style={style} className={s.modal} onClick={handleModalClick}>
+        <div className={s.overlay}>
+            <div ref={modalRef} style={style} className={s.modal}>
                 {children}
             </div>
         </div>
