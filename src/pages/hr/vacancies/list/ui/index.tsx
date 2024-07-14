@@ -17,7 +17,7 @@ export const VacancyListHRPage = () => {
 
     useEffect(() => {
         const fetchVacancies = async () => {
-            const response = await $api.get(`organisations/${tenant}/vacancies/${user.role == 2 ? "my/" : ""}`);
+            const response = await $api.get(`organisations/${tenant}/vacancies/${user.role != 1 ? "my/" : ""}`);
             console.log(response.data);
             setVacanciesList(response.data);
         };

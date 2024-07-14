@@ -1,6 +1,6 @@
 import axios from "axios";
 import { store } from "../store";
-import { login } from "@/features/auth/slice";
+import { login, logout } from "@/features/auth/slice";
 
 const API_URL = "http://127.0.0.1:8000/";
 
@@ -38,6 +38,7 @@ $api.interceptors.response.use(
                 }));
                 return $api(req);
             } catch (error) {
+                store.dispatch(logout());
                 Promise.reject(error);
             }
         }

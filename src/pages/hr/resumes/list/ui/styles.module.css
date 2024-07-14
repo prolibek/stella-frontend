@@ -1,0 +1,24 @@
+.dataFilter {
+    display: flex;
+    margin-top: 20px;
+}
+
+.viewType {
+    margin-top: 25px;
+}
+
+.viewType ul {
+    display: flex;
+    list-style-type: none;
+    font-weight: 550;
+    font-size: 18px;
+    gap: 50px;
+}
+
+.viewType ul li:hover {
+    cursor: pointer;
+}
+
+.underline {
+    text-decoration: underline;
+}

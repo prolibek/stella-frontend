@@ -1,0 +1,160 @@
+.mainWrapper {
+    height: calc(100% - 30px);
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.photoWInfo {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+
+.resumePhoto {
+    height: 100px;
+    width: 100px;
+}
+
+.infoHead h2 {
+    font-weight: 560;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.infoHead p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.infoHead strong {
+    font-weight: 560;
+}
+
+.left {
+    margin-top: 25px;
+    width: 50%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.rightWrapper {
+    height: 100%;
+    width: 50%;
+    background-color: rgb(246, 246, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.back:hover {
+    cursor: pointer;
+}
+
+.vacancyMenu {
+    display: flex;
+    gap: 25px;
+    margin-top: 25px;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.vacButton {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.borderBottom {
+    text-decoration: underline;
+}
+
+.vacButton:hover {
+    cursor: pointer;
+}
+
+.intWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.datetime {
+    display: flex;
+    gap: 20px;
+}
+
+.createInt {
+    width: 80%;
+    height: 150px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.intName {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.datetime {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inp {
+    font-weight: 520;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.appointBtn {
+    width: 60%;
+    height: 40px;
+    margin-top: 10px;
+    font-size: 15px;
+    background: none;
+    outline: none;
+    border: none;
+    transition: .4s;
+}
+
+.appointBtn:hover {
+    cursor: pointer;
+    background-color: rgb(208, 208, 241);
+}
+
+.intList {
+    overflow-y: auto;
+    max-height: 400px;
+    width: 80%;
+}
+
+.intDet {
+    width: 80%;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-left: 3px rgb(208, 208, 241) solid;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.intDet h4 {
+    font-weight: 550;
+}
+
+.timeInfo {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,36 @@
+.table {
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.table tr {
+    transition: .2s;
+}
+
+.table tr:hover {
+    background-color: #EDEEFF;
+    cursor: pointer;
+}
+
+.table thead tr:hover {
+    background-color: transparent;
+}
+
+.table td {
+    font-weight: 500;
+}
+
+.table th {
+    font-weight: 550;
+}
+
+.table th:last-child, .table td:last-child {
+    border-right: none;
+}
