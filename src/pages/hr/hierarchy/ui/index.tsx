@@ -139,8 +139,22 @@ export const HierarchyPage = () => {
     };    
 
     const handleSaveClick = async () => {
-        // Save logic here
-    }
+        const filteredElements = elements.filter(el => el.data.label !== 'CEO');
+        const filteredEdges = edges.filter(edge => 
+            filteredElements.some(el => el.id === edge.source || el.id === edge.target)
+        );
+    
+        const updatedManagers = filteredElements.map(el => ({
+            id: el.id,
+            position: el.data.label,
+            member: el.data.member ? el.data.member.user.id : null,
+            parent_manager: filteredEdges.find(edge => edge.target === el.id)?.source || null
+        }));
+    
+        const response = await $api.post(`/organisations/${tenant}/managers/save_hierarchy/`, { managers: updatedManagers });
+        console.log(response)
+        alert('Hierarchy saved successfully!');
+    };    
 
     return (
         <>
