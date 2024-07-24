@@ -35,7 +35,7 @@ export const ResumeDetailPage = () => {
     useEffect(() => {
         const fetchInterviews = async () => {
             const response = await $api.get(`/organisations/${tenant}/resumes/${params.id}/interviews/`)
-            setInterviews(response.data.interviews)
+            setInterviews(response.data)
         }
 
         if(selected === 1)
@@ -127,6 +127,31 @@ export const ResumeDetailPage = () => {
                                     <span>{item.date}</span>
                                     <span>{item.start_time} - {item.end_time}</span>
                                 </div>
+                                <textarea 
+                                    value={item.notes}
+                                    onChange={(e) => {
+                                        const newInts = interviews.map((item, index) =>
+                                            index === idx ? { ...item, notes: e.target.value } : item
+                                        )
+                                        setInterviews(newInts);
+                                    }}
+                                    className={s.notes}
+                                />
+                                <div className={s.intIcons}>
+                                    <img 
+                                        className={s.intIcon} width={20} 
+                                        src="/images/trashIcon_black.png" 
+                                    />
+                                    <img
+                                        onClick={async () => {
+                                            await $api.patch(`/organisations/${tenant}/resumes/${params.id}/interviews/${item.id}/`, {
+                                                "notes": item.notes
+                                            })
+                                        }} 
+                                        className={s.intIcon} 
+                                        width={20} 
+                                        src="/images/checMarkIcon.png" />
+                                </div>
                             </div>
                         ))
                     }
@@ -169,7 +194,7 @@ export const ResumeDetailPage = () => {
                         <button
                             className={`${s.vacButton} ${selected == 2 && s.borderBottom}`}       
                             onClick={() => setSelected(2)}                     
-                        >Statistics</button>
+                        >Characteristics</button>
                     </div>
                     { elements[selected] }
                 </div>

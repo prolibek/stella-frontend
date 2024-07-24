@@ -15,6 +15,7 @@ import { VacancyListHRPage } from "./pages/hr/vacancies/list"
 import { VacancyDetailPage } from "./pages/hr/vacancies/detail"
 import { ResumeListPage } from "./pages/hr/resumes/list"
 import { ResumeDetailPage } from "./pages/hr/resumes/detail"
+import { HierarchyPage } from "./pages/hr/hierarchy"
 
 export const publicRoutes = [
     { path: '/', element: <LandingPage/> },
@@ -44,7 +45,8 @@ export const privateHRRoutes = [
 
     { path: '/organisations/:key/structure/members', element: <Members/> },
     { path: '/organisations/:key/structure/information', element: <OrganisationInformationPage/> },
-    
+    { path: '/organisations/:key/structure/hierarchy/', element: <HierarchyPage/>},
+
     { path: '/organisations/:key/applications', element: <ApplicationHRPage/>},
     
     { path: '/organisations/:key/resumes', element: <ResumeListPage/>},

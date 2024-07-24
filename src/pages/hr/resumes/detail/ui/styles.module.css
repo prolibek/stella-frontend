@@ -136,7 +136,7 @@
 
 .intList {
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 500px;
     width: 80%;
 }
 
@@ -157,4 +157,29 @@
 .timeInfo {
     display: flex;
     justify-content: space-between;
+}
+
+.notes {
+    resize: none;
+    width: 100%;
+    margin-top: 10px;
+    height: 60px;
+    font-size: 16px;
+    padding: 7px;
+}
+
+.intIcons {
+    display: flex;
+    flex-direction: row;
+}
+
+.intIcon {
+    width: 30px;
+    padding: 5px;
+}
+
+.intIcon:hover {
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: rgb(204, 204, 222);
 }
